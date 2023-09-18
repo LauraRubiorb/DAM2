@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Data
 @Getter
 @Setter
-public class Lista {
+public class Lista implements Gestionable{
     int id;
     ArrayList<String> lista;
 
@@ -19,5 +19,11 @@ public class Lista {
 
     public Lista(int id) {
         this.id = id;
+        lista = new ArrayList<>();
+    }
+
+    @Override
+    public void verDetalle() {
+        System.out.println(id);
     }
 }

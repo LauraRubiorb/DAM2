@@ -20,6 +20,12 @@ public final class TareaTrabajo extends Tarea {
         super(id, titulo, prioridad, descripcion);
         this.proyecto = proyecto;
     }
+
+    @Override
+    public void verDetalle() {
+        super.verDetalle();
+    }
+
     @Override
     public String toString() {
         return super.toString() + "proyecto=" + proyecto;

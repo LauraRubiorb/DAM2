@@ -13,6 +13,11 @@ public final class TareaOcio extends Tarea{
         super();
     }
 
+    @Override
+    public void verDetalle() {
+        super.verDetalle();
+    }
+
     public TareaOcio(String ubicacion, int presupuesto) {
         this.ubicacion = ubicacion;
         this.presupuesto = presupuesto;

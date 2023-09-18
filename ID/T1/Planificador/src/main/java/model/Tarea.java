@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 
-public class Tarea {
+public class Tarea implements Gestionable {
     private int id;
     private String titulo;
     private EnumPrioridad prioridad;
@@ -31,6 +31,8 @@ public class Tarea {
         this.fecha = "01/01/20";
         this.prioridad = EnumPrioridad.Baja;
         this.completada = false;
+        listaSubtareas = new ArrayList<>();
+
     }
 
     public Tarea(int id, String titulo, EnumPrioridad prioridad, String descripcion) {
@@ -40,6 +42,7 @@ public class Tarea {
         this.descripcion = descripcion;
         this.fecha = "01/01/20";
         this.completada = false;
+        listaSubtareas = new ArrayList<>();
 
     }
 
@@ -54,5 +57,10 @@ public class Tarea {
                 ", descripcion='" + descripcion + '\'' +
                 ", completada='" + completada + '\'' +
                 '}';
+    }
+
+    @Override
+    public void verDetalle() {
+
     }
 }
