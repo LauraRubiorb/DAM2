@@ -1,9 +1,13 @@
+import database.GestionDB;
 import model.*;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class Entrada {
     public static void main(String[] args) {
+        GestionDB gestionDB = new GestionDB();
+        Connection connection = gestionDB.getConnection();
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
         int idModificar = 0;
@@ -38,7 +42,7 @@ public class Entrada {
                 case 4:
                     System.out.println("Introduce el id de la tarea a completar");
                     idCompletar = scanner.nextInt();
-                    planificador.completarTarea(idCompletar);
+                    //planificador.completarTarea(idCompletar);
                     break;
                 case 5:
                     planificador.listarCompletas();

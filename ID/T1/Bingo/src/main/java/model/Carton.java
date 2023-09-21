@@ -3,13 +3,18 @@ package model;
 import lombok.Data;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+//PASAR 5 SG
 
 @Data
 public class Carton {
     int id;
-    int precio = 1;
+    final int precio = 1;
+    //Array array[10];
     //todo 10 numeros unicos del 1-99
     Array [][] carton = new Array[3][9];
+
+    //acertados == 10 num PREMIOOOO
 
     //PASOS PARA CREAR UN CARTON DE BINGO
     /*
@@ -20,6 +25,12 @@ public class Carton {
      */
     public static int generaNumeros(int min, int max) {
         return (int) (Math.random() * (max - min + 1) + (min));
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void rellenarCarton(Array[][] carton){
         int aleatorio;

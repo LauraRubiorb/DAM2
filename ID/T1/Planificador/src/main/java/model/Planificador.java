@@ -1,9 +1,12 @@
 package model;
 
+import database.GestionDB;
+import database.SchemaDB;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +14,7 @@ import java.util.Scanner;
 @Getter
 @Data
 public class Planificador {
+    Connection connection;
     Scanner scanner = new Scanner(System.in);
     int opcionCrearTarea = 0;
     String opcionSubtarea0;
@@ -18,15 +22,21 @@ public class Planificador {
     int opcionPrior = 0;
     int idsubtarea = 0;
     ArrayList<Tarea> listaTareas;
-    ArrayList<Tarea> listaSubtareas;
+    ArrayList<Gestionable> listaGestion;
     int id = 0, presupuesto = 0;
     String titulo, descripcion, ubi, proyecto;
     EnumPrioridad enumPrioridad = null;
+    Statement statement;
+    PreparedStatement preparedStatement;
+    ResultSet resultSet;
 
 
     public Planificador() {
 //inicializamos el arraaylist
         listaTareas = new ArrayList<>();
+        listaGestion = new ArrayList<>();
+        connection = new GestionDB().getConnection();
+
     }
     //metodo que permite agregar una tarea al planiff
 
@@ -36,11 +46,46 @@ public class Planificador {
 
     //primero comprobamos si la lista tiene alguna tarea.->return false xq no existe o xq el id no esta en la lista
     //return true si existe una tarea con ese id
+    public void addGestionableSQL(Gestionable gestionable) {
+        //tarea
+        try {
+            statement = connection.createStatement();
+            if (gestionable instanceof Tarea) {
+                String query = "INSERT INTO %s (%s,%s,%s,%d,%b,%d) VALUES"+("%s,%s,%s,%d,%b,%d");
+                statement.execute(String.format(query, SchemaDB.TABLA1,
+                        SchemaDB.TITULO1,SchemaDB.PRIO1,SchemaDB.FECHA1,SchemaDB.DESC1,SchemaDB.COMPLETADA1,SchemaDB.IDSUB1,
+                        ((Tarea) gestionable).getTitulo(),((Tarea) gestionable).getPrioridad(),((Tarea) gestionable).getFecha(),
+                        ((Tarea) gestionable).getDescripcion(),((Tarea) gestionable).getCompletada(),((Tarea) gestionable).getListaSubtareas()));
+                statement.execute(query);
+                //add database
+            }else if (gestionable instanceof Lista) {
+        //lista
+                String query = "INSERT INTO %s()";
+                preparedStatement = connection.prepareStatement(query);
+            }
+
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+
+        }
+    }
+    public void getAllTareas(){
+        try {
+            statement = connection.createStatement();
+            resultSet  =statement.executeQuery("SELECT * FROM");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public boolean existeId(int id) {
-        if (listaTareas.size() == 0) {
+        if (listaGestion.size() == 0) {
             return false;
         } else {
-            for (Tarea item : listaTareas) {
+            for (Gestionable item : listaGestion) {
                 if (item.getId() == id) {
                     return true;
                 }
@@ -122,9 +167,13 @@ public class Planificador {
                         case 2 -> enumPrioridad = EnumPrioridad.Media;
                         case 3 -> enumPrioridad = EnumPrioridad.Alta;
                     }
-                    Tarea tarea = new Tarea(id, titulo, enumPrioridad, descripcion);
-                    listaSubtareas.add(tarea);
-                    System.out.println("Subtarea añadida");
+                    for (Tarea item : listaTareas) {
+                        if (item.getId() == idsubtarea) {
+                            Tarea tarea = new Tarea(id, titulo, enumPrioridad, descripcion);
+                            item.getListaSubtareas().add(tarea);
+                            System.out.println("Subtarea añadida");
+                        } else System.out.println("Tarea no encontrada");
+                    }
                 }
             } else System.out.println("Error");
         }
@@ -159,14 +208,14 @@ public class Planificador {
         }
     }
 
-    public void completarTarea(int id) {
+   /* public void completarTarea(int id) {
         if (existeId(id)) {
             for (Tarea item : listaSubtareas) {
                 item.setCompletada(true);
                 System.out.println("Tarea completada");
             }
         } else System.out.println("Tarea no encontrada");
-    }
+    TODO}*/
 
     public void listarCompletas() {
         for (Tarea item : listaTareas) {
@@ -175,7 +224,8 @@ public class Planificador {
             }
         }
     }
-    public void listarIncompletas(){
+
+    public void listarIncompletas() {
         for (Tarea item : listaTareas) {
             if (!item.getCompletada()) {
                 System.out.println(item);
