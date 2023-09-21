@@ -1,10 +1,25 @@
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
+
 fun main(args: Array<String>) {
-    var ip = "8.8.8.8"
-    val processBuilder3 = ProcessBuilder("cmd.exe", "/c","ping $ip > C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt")
-    val processBuilder2 = ProcessBuilder("cmd.exe","/c","ipconfig > C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt")
-    val processBuilder = ProcessBuilder("cmd.exe", "/c", "date /t > C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt ")
-    processBuilder2.start()
-    processBuilder.start()
+    /* var ip = "8.8.8.8"
+     val processBuilder3 = ProcessBuilder("cmd.exe", "/c","ping $ip > C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt")
+     val processBuilder2 = ProcessBuilder("cmd.exe","/c","ipconfig > C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt")
+     val processBuilder = ProcessBuilder("cmd.exe", "/c", "date /t > C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt ")
+     processBuilder2.start()
+     processBuilder.start()*/
+    //debemos acceder al input stream del proceso para leer los datos de la salida del comando
+//coger el objeto de la ejecucion actual y hacer dir
+    val process = Runtime.getRuntime().exec("cmd.exe /c dir");
+    //ver sus datos
+    val reader = BufferedReader(InputStreamReader(process.inputStream))
+    var line:String ?
+    while (reader.readLine().also { line = it }!= null ){
+        println(line)
+    }
+    reader.close()
+
     //, "/c", "ipconfig >> C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt"
 //C:\Users\laura\Desktop\Laura
 //cmd.exe" , "/c" , "date /t > C:\\Users\\laura\\Desktop\\Laura\\hora.txt
