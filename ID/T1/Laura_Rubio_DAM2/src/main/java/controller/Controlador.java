@@ -14,6 +14,7 @@ public class Controlador {
     PreparedStatement preparedStatement;
     ResultSet resultSet;
 
+
     public Controlador() {
         connection = new GestionDB().getConnection();
     }
@@ -98,6 +99,7 @@ public class Controlador {
                     String query2 = "UPDATE %s SET %s = '%s' WHERE %s= '%s'";
                     statement = connection.createStatement();
                     statement.execute(query2, SchemaDB.TABLA3, SchemaDB.idAlumno3, idAlumno, SchemaDB.idAlumno3, 0);
+                    contador++;
                 }
 
             } while (contador1 != 3);

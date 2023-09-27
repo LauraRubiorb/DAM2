@@ -1,6 +1,8 @@
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.io.OutputStream
+import java.io.OutputStreamWriter
 
 fun main(args: Array<String>) {
     /* var ip = "8.8.8.8"
@@ -11,19 +13,23 @@ fun main(args: Array<String>) {
      processBuilder.start()*/
     //debemos acceder al input stream del proceso para leer los datos de la salida del comando
 //coger el objeto de la ejecucion actual y hacer dir
-    val process = Runtime.getRuntime().exec("cmd.exe /c dir");
+    /*val process = Runtime.getRuntime().exec("cmd.exe /c dir");
     //ver sus datos
     val reader = BufferedReader(InputStreamReader(process.inputStream))
     var line:String ?
     while (reader.readLine().also { line = it }!= null ){
         println(line)
     }
-    reader.close()
+    reader.close()*/
 
     //, "/c", "ipconfig >> C:\\Users\\laura\\Desktop\\Laura\\COMANDOS.txt"
 //C:\Users\laura\Desktop\Laura
 //cmd.exe" , "/c" , "date /t > C:\\Users\\laura\\Desktop\\Laura\\hora.txt
-
+//-----------------------------------------------------------------------------
+    val mensaje = "Hola proceso hijo"
+    val out = OutputStreamWriter(System.out)
+    out.write(mensaje)
+    out.flush()
 }
 //ejecutar con linea de comandos hay que saber donde esta el punto class. Copiamos la ruta del .class
 //cd y ruta.Para ejecutarlo le pones java y nombre sin el punto class
@@ -31,3 +37,7 @@ fun main(args: Array<String>) {
 //"C:\Program Files\Java\jdk-18.0.2.1\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\lib\idea_rt.jar=53635:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.2\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\laura\Documents\GitHub\DAM2\PSP\T1\Intro\out\production\Intro;C:\Users\laura\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.7.10\kotlin-stdlib-jdk8-1.7.10.jar;C:\Users\laura\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.7.10\kotlin-stdlib-1.7.10.jar;C:\Users\laura\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.7.10\kotlin-stdlib-common-1.7.10.jar;C:\Users\laura\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Users\laura\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.7.10\kotlin-stdlib-jdk7-1.7.10.jar MainKt notepad
 
 //ejecutar dos comandos separados.
+
+//PRACTICA
+
+//comunicar dos procesos: uno escribe y otro lee

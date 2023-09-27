@@ -9,7 +9,6 @@ public class Entrada {
         //var
         String nombre = null;
         int dinero = 0;
-        int carton = 0;
         String dni = null;
         do {
             System.out.println("Seleccione una opcion");
@@ -19,29 +18,30 @@ public class Entrada {
                     3.Iniciar el juego
                     4.Salir
                     """);
-            scanner.nextInt();
+            opcionMENU = scanner.nextInt();
             switch (opcionMENU) {
                 case 1:
                     System.out.println("Introduzca nombre");
                     nombre = scanner.next();
-                    System.out.println("Introduzca dinero");
-                    dinero= scanner.nextInt();
-                    bingo.crearJugador(nombre,dinero);
-                    break;
-                case 2:
                     System.out.println("Introduzca dni");
                     dni = scanner.next();
-                    System.out.println("Introduzca la cantidad de cartones a comprar(1€ x carton");
-                    carton= scanner.nextInt();
-                    bingo.comprarCarton(nombre,carton);
+                    System.out.println("Introduzca dinero");
+                    dinero= scanner.nextInt();
+                    bingo.crearJugador(nombre,dinero,dni);
+                    break;
+                case 2://comprar carton
+                    System.out.println("Introduzca dni");
+                    dni = scanner.next();
+                    bingo.comprarCarton(nombre);
                     break;
                 case 3:
+                    //iniciar juego
+                    bingo.inicioJuego();
                     break;
                 case 4:
                     System.out.println("Saliendo");
                     break;
             }
-
         } while (opcionMENU != 4);
     }
 }

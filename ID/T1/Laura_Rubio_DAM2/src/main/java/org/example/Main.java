@@ -22,8 +22,8 @@ public class Main {
         int opcionMenu = 0;
         do {
             System.out.println("Seleccione una opción");
-            opcionMenu = scanner.nextInt();
             System.out.println("1.Agregar alumno\n2.Agregar profesor.\n3.Agregar proyecto\n4.Listar proyectos\n5.Salir");
+            opcionMenu = scanner.nextInt();
             switch (opcionMenu) {
                 case 1:
                     System.out.println("Introduzca el nombre");
