@@ -11,4 +11,6 @@ fun main(){
     println(resultado)
     //val valor = hijo.waitFor()
     println("el hijo ha finalizado")
+
+    //ideas: hijo devuelva info dada por el padre
 }
