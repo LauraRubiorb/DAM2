@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19cd19bb-ac8a-4ffa-8829-b361439da4cf" name="Changes" comment="" />
+    <list default="true" id="637b81e5-0ef1-4063-8dad-409fa5b73966" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,12 +18,12 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2WCJL2FuyHZYmWDQFMz35TWFhun" />
+  <component name="ProjectId" id="2WLBmUfQlkrwcv5SsTXg6Jn9ump" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,18 +35,13 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.layout" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="LayoutApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.layout.LayoutApplication" />
-      <module name="Layout" />
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.calculadora.MainApplication" />
+      <module name="Calculadora" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.layout.*" />
+          <option name="PATTERN" value="com.example.calculadora.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -56,18 +51,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LayoutApplication" />
+        <item itemvalue="Application.MainApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="19cd19bb-ac8a-4ffa-8829-b361439da4cf" name="Changes" comment="" />
-      <created>1696230569408</created>
+      <changelist id="637b81e5-0ef1-4063-8dad-409fa5b73966" name="Changes" comment="" />
+      <created>1696502139421</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696230569408</updated>
+      <updated>1696502139421</updated>
     </task>
     <servers />
   </component>
