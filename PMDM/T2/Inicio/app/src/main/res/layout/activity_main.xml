@@ -4,22 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_general"
     tools:context=".MainActivity">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/hello_tag"
-    android:textSize="20sp"
-    />
-    <Button
-        android:id="@+id/boton_pulsar"
-        android:layout_marginTop="20dp"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pulsar"
-        />
+        android:text="@string/hello_tag"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edit_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_elements"
+        android:drawableLeft="@drawable/personas"
+        android:drawablePadding="@dimen/padding_edit_drawable"
+        android:hint="@string/hint_edit"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edit_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_elements"
+        android:drawableLeft="@drawable/phone"
+        android:drawablePadding="@dimen/padding_edit_drawable"
+        android:hint="@string/hint_edit"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_general"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/boton_pulsar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/text_pulsar" />
+
+        <Button
+            android:id="@+id/boton_vaciar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"
+            android:text="@string/text_vaciar" />
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

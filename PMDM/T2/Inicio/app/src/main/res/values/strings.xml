@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Inicio</string>
     <string name="hello_tag">Primera app android</string>
+    <string name="text_pulsar">PULSAR</string>
+    <string name="hint_edit">Por favor, introduce tu nombre</string>
+    <string name="text_vaciar">VACIAR</string>
+    <string name="text_continuar">¿Desea continuar?</string>
+    <string name="text_continuar1">Perfecto</string>
 </resources>

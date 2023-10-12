@@ -17,6 +17,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </BorderPane.margin>
       </TextField>
+
    </top>
    <center>
       <GridPane fx:id="gridBotones" alignment="CENTER" BorderPane.alignment="CENTER">
@@ -35,7 +36,7 @@
             <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="boton1" maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="1" GridPane.rowIndex="1">
+            <Button fx:id="boton1" mnemonicParsing="false" text="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -95,7 +96,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="botonMultiplicar" mnemonicParsing="false" text="*" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Button fx:id="botonMultiplicar" mnemonicParsing="false" text="x" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -115,7 +116,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="botonCientifica" mnemonicParsing="false" text="Calculadora Cientifica" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <Button fx:id="botonCientifica" mnemonicParsing="false" text="Cientifica" GridPane.columnSpan="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>
@@ -132,24 +133,39 @@
       </GridPane>
    </center>
    <left>
-      <VBox fx:id="parteIzq" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="6.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="parteIzq" alignment="CENTER" prefHeight="200.0" prefWidth="70.0" spacing="4.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="botonLog" mnemonicParsing="false" text="log" />
-            <Button fx:id="botonSin" mnemonicParsing="false" text="sin" />
-            <Button fx:id="botonTan" mnemonicParsing="false" text="tan" />
-            <Button fx:id="botonCos" mnemonicParsing="false" text="cos" />
+            <Button fx:id="botonLog" mnemonicParsing="false" text="log">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin></Button>
+            <Button fx:id="botonSin" mnemonicParsing="false" text="sin">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin></Button>
+            <Button fx:id="botonTan" mnemonicParsing="false" text="tan">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin></Button>
+            <Button fx:id="botonCos" mnemonicParsing="false" text="cos">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin></Button>
          </children>
       </VBox>
    </left>
    <right>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea fx:id="textHistorial" maxHeight="200.0" maxWidth="100.0" prefHeight="200.0" prefWidth="200.0">
+            <TextArea fx:id="textHistorial" disable="true" maxHeight="300.0" maxWidth="130.0" prefHeight="200.0" prefWidth="200.0">
                <VBox.margin>
-                  <Insets bottom="7.0" left="7.0" right="7.0" />
+                  <Insets bottom="7.0" left="10.0" right="7.0" />
                </VBox.margin>
             </TextArea>
          </children>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
       </VBox>
    </right>
 </BorderPane>

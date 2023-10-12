@@ -38,7 +38,9 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private TextField textoCalculadora;
     private int operando1;
     private int operando2;
+    private int operando3;
     private int operacion;
+    private boolean isOperando = false;
 
 
     @Override
@@ -66,15 +68,21 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 actionEvent.getSource() == boton5 || actionEvent.getSource() == boton6 || actionEvent.getSource() == boton7 || actionEvent.getSource() == boton8 ||
                 actionEvent.getSource() == boton9 || actionEvent.getSource() == boton0) {
             System.out.println("Pulsado boton");//cojo el primer operando
-            textoCalculadora.appendText(((Button) actionEvent.getSource()).getText());
-            operando2 = Integer.parseInt(textoCalculadora.getText());
-            System.out.println(operando2);
-        } else if (actionEvent.getSource() == botonMas || actionEvent.getSource() == botonMultiplicar ||
-                actionEvent.getSource() == botonRestar || actionEvent.getSource() == botonDividir || actionEvent.getSource() == botonC) {
-            //cuando pulse la operacion cojo el segundo operando y reseteo el texto
-            operando1 = Integer.parseInt(textoCalculadora.getText());
-            System.out.println(operando2);
+            //cuando no opero
+            if (!isOperando) {
+                textoCalculadora.appendText(((Button) actionEvent.getSource()).getText());
+            } else {
+                textoCalculadora.setText(((Button) actionEvent.getSource()).getText());
+                isOperando = false;
+            }
+        } else if (actionEvent.getSource() == botonC) {
             textoCalculadora.setText("");
+            textHistorial.setText("");
+        } else if (actionEvent.getSource() == botonMas || actionEvent.getSource() == botonMultiplicar ||
+                actionEvent.getSource() == botonRestar || actionEvent.getSource() == botonDividir) {
+            //cuando pulse la operacion cojo el segundo operando y reseteo el texto
+            operando1 = (int) Double.parseDouble(textoCalculadora.getText());
+            isOperando = true;
             //vemos q operador es para unirlo al switch
             if (actionEvent.getSource() == botonMas) {
                 operacion = 1;
@@ -106,28 +114,53 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         } else if (actionEvent.getSource() == botonHistorial) {
             if (bordeGeneral.getRight() == null) {
                 bordeGeneral.setRight(textHistorial);
+                while (actionEvent.getSource() == boton0 || actionEvent.getSource() == boton1) {
+                    textHistorial.appendText(textoCalculadora.getText());
+                }
             } else {
                 bordeGeneral.setRight(null);
             }
             //cuando pulse = realizará la operacion
         } else if (actionEvent.getSource() == botonIgual) {
-            int resultado = 0;
+            operando2 = (int) Double.parseDouble(textoCalculadora.getText());
+            double resultado = 0;
+            isOperando = true;
             switch (operacion) {
                 case 1:
                     resultado = operando1 + operando2;
+                    textHistorial.appendText(operando1 + "+" + operando2 + "=" + resultado + "\n");
                     break;
                 case 2:
                     resultado = operando1 - operando2;
+                    textHistorial.appendText(operando1 + "-" + operando2 + "=" + resultado + "\n");
                     break;
                 case 3:
                     resultado = operando1 * operando2;
-                    System.out.println(resultado);
+                    textHistorial.appendText(operando1 + "x" + operando2 + "=" + resultado + "\n");
                     break;
                 case 4:
-                    resultado = operando1 / operando2;
+                    resultado = (double) operando1 / operando2;
+                    textHistorial.appendText(operando1 + "/" + operando2 + "=" + resultado + "\n");
+                    break;
+                case 5:
+                    resultado = ((Math.log(operando2)));
+                    textHistorial.appendText(operando2 + "log = " + resultado);
+                    break;
+                case 6:
+                    //resultado = (double) (Math.sin(operando2));
+                    textHistorial.appendText(operando2 + "sin =" + resultado + "\n");
+                    break;
+                case 7:
+                    //resultado = Math.tan(operando2);
+                    textHistorial.appendText(operando2 + "tan =" + resultado + "\n");
+                    break;
+                case 8:
+                    //resultado = Math.cos(operando2);
+                    textHistorial.appendText(operando2 + "cos =" + resultado + "\n");
                     break;
             }
             textoCalculadora.setText(String.valueOf(resultado));
+            isOperando = true;
         }
     }
 }
