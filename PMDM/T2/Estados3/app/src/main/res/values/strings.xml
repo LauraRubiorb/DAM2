@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Estados</string>
+    <string name="botonReset">Resetear</string>
 </resources>

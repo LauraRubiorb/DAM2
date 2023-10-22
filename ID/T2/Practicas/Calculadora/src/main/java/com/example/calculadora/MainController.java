@@ -38,7 +38,6 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private TextField textoCalculadora;
     private int operando1;
     private int operando2;
-    private int operando3;
     private int operacion;
     private boolean isOperando = false;
 
@@ -67,7 +66,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         if (actionEvent.getSource() == boton1 || actionEvent.getSource() == boton2 || actionEvent.getSource() == boton3 || actionEvent.getSource() == boton4 ||
                 actionEvent.getSource() == boton5 || actionEvent.getSource() == boton6 || actionEvent.getSource() == boton7 || actionEvent.getSource() == boton8 ||
                 actionEvent.getSource() == boton9 || actionEvent.getSource() == boton0) {
-            System.out.println("Pulsado boton");//cojo el primer operando
+            System.out.println("Pulsado boton");
             //cuando no opero
             if (!isOperando) {
                 textoCalculadora.appendText(((Button) actionEvent.getSource()).getText());

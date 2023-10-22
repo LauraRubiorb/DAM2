@@ -13,15 +13,6 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <TextView
-            android:textSize="50sp"
-            android:gravity="center"
-            android:id="@+id/textoContador"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.33"
-            android:text="0" />
-
         <Button
             android:id="@+id/botonSuma"
             android:layout_width="match_parent"
@@ -35,6 +26,23 @@
             android:layout_weight="0.33"
             android:layout_height="0dp"
             android:text="-1" />
+
+        <Button
+            android:id="@+id/botonReset"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.33"
+            android:text="@string/botonReset" />
     </LinearLayout>
+
+        <TextView
+            android:textSize="50sp"
+            android:gravity="center"
+            android:id="@+id/textoContador"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="0" />
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

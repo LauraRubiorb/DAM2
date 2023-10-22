@@ -4,26 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="637b81e5-0ef1-4063-8dad-409fa5b73966" name="Changes" comment="" />
+    <list default="true" id="4991b20d-65a8-41e4-8d1c-d6ede8551e1f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2WLBmUfQlkrwcv5SsTXg6Jn9ump" />
+  <component name="ProjectId" id="2WyY2o5koq6blBl8EEhUKeDEWFR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,17 +25,16 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/laura/Documents/GitHub/dam2/ID/T2/Botones"
+    "RunOnceActivity.ShowReadmeOnStart": "true"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.calculadora.MainApplication" />
-      <module name="Calculadora" />
+      <option name="MAIN_CLASS_NAME" value="com.example.laurarubio_t2_di_dam2.MainApplication" />
+      <module name="LauraRubio_T2_DI_DAM2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.calculadora.*" />
+          <option name="PATTERN" value="com.example.laurarubio_t2_di_dam2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -59,11 +51,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="637b81e5-0ef1-4063-8dad-409fa5b73966" name="Changes" comment="" />
-      <created>1696502139421</created>
+      <changelist id="4991b20d-65a8-41e4-8d1c-d6ede8551e1f" name="Changes" comment="" />
+      <created>1697706082216</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696502139421</updated>
+      <updated>1697706082216</updated>
     </task>
     <servers />
   </component>

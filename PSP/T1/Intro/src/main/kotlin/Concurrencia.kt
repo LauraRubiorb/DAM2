@@ -1,5 +1,5 @@
 import java.util.concurrent.CountDownLatch
-
+/*
 class Concurrencia {
     fun main() {
         val lanch = CountDownLatch(2)
@@ -40,6 +40,5 @@ class Hilo2(private val lanch: CountDownLatch) : Thread() {
             }
             lanch.countDown()
         }
-    }
+    }*/
 
-}
