@@ -142,20 +142,20 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                     textHistorial.appendText(operando1 + "/" + operando2 + "=" + resultado + "\n");
                     break;
                 case 5:
-                    resultado = ((Math.log(operando2)));
-                    textHistorial.appendText(operando2 + "log = " + resultado);
+                    resultado = ((Math.log(operando1)));
+                    textHistorial.appendText(operando1 + "log = " + resultado);
                     break;
                 case 6:
-                    //resultado = (double) (Math.sin(operando2));
-                    textHistorial.appendText(operando2 + "sin =" + resultado + "\n");
+                    resultado = (double) (Math.sin(operando1));
+                    textHistorial.appendText(operando1 + "sin =" + resultado + "\n");
                     break;
                 case 7:
-                    //resultado = Math.tan(operando2);
-                    textHistorial.appendText(operando2 + "tan =" + resultado + "\n");
+                    resultado = Math.tan(operando1);
+                    textHistorial.appendText(operando1 + "tan =" + resultado + "\n");
                     break;
                 case 8:
-                    //resultado = Math.cos(operando2);
-                    textHistorial.appendText(operando2 + "cos =" + resultado + "\n");
+                    resultado = Math.cos(operando1);
+                    textHistorial.appendText(operando1 + "cos =" + resultado + "\n");
                     break;
             }
             textoCalculadora.setText(String.valueOf(resultado));
