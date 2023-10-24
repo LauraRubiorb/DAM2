@@ -27,12 +27,14 @@
             android:layout_height="0dp"
             android:text="-1" />
 
-        <Button
+        <ImageButton
             android:id="@+id/botonReset"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.33"
-            android:text="@string/botonReset" />
+            android:text="@string/botonReset"
+            android:background="@drawable/fondo_boton"
+            android:scaleType="fitXY"/>
     </LinearLayout>
 
         <TextView

@@ -12,7 +12,7 @@ fun main() {
     val fechaNacimientoStr = scanner.nextLine()
 
     val fechaNacimiento = LocalDate.parse(fechaNacimientoStr)
-    val br = BufferedReader(InputStreamReader(fechaNacimiento.getInputStream()))
+   // val br = BufferedReader(InputStreamReader(fechaNacimiento.getInputStream()))
 
     val hiloPadre = thread {
         val edad = calcularEdad(fechaNacimiento)

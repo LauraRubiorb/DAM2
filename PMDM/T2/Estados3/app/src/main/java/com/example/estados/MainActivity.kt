@@ -1,18 +1,20 @@
 package com.example.estados
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), OnClickListener {
     private lateinit var botonSuma: Button
     private lateinit var botonResta: Button
-    //private lateinit var botonReset: Button
+    private var botonReset: ImageButton? = null
     private lateinit var textoContador: TextView
     private var resultado: Int? = null
 
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private fun acciones() {
         botonResta.setOnClickListener(this)
         botonSuma.setOnClickListener(this)
-        //botonReset.setOnClickListener(this)
+        botonReset?.setOnClickListener(this)
         //application.applicationContext.
     }
 
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         textoContador = findViewById(R.id.textoContador)
         botonSuma = findViewById(R.id.botonSuma)
         botonResta = findViewById(R.id.botonResta)
-        //botonReset = findViewById(R.id.botonReset)
+        botonReset = findViewById(R.id.botonReset)
     }
 
     override fun onStart() {
@@ -78,13 +80,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 R.id.botonSuma -> {
                     resultado = resultado!! + 1
                 }
-
                 R.id.botonResta -> {
                     resultado = resultado!! - 1
                 }
-                /*R.id.botonReset ->{
-                    resultado = 0
-                }*/
+                R.id.botonReset ->{
+                    val intent = Intent(applicationContext,SecondActivity::class.java)
+                    intent.putExtra("resultado",resultado)
+                    startActivity(intent)
+                }
             }
         }
         if (!comprobarLimite(p0!!)) {
