@@ -2,4 +2,7 @@
     <string name="app_name">Juego de Cartas</string>
     <string name="boton_empezar">EMPEZAR</string>
     <string name="editText_name">Introduce nombre</string>
+    <string name="noti1">Por favor introduce nombre</string>
+    <string name="UP">up</string>
+    <string name="pulsar">Pulsar</string>
 </resources>

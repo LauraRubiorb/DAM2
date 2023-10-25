@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         botonResta.setOnClickListener(this)
         botonSuma.setOnClickListener(this)
         botonReset?.setOnClickListener(this)
-        //application.applicationContext.
     }
 
     private fun instancias() {

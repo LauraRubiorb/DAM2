@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_cartas"
     tools:context=".MainActivity"
-    android:gravity="center"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fondo_cartas">
+    </androidx.appcompat.widget.AppCompatImageView>
+
     <androidx.appcompat.widget.AppCompatButton
+        android:layout_gravity="top|center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/boton_empezar"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
         android:textSize="20sp"
         android:id="@+id/botonEmpezar"
         />
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:layout_marginTop="110dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -26,8 +33,4 @@
         android:hint="@string/editText_name"
         android:textColorHint="@color/white"
         />
-
-
-
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>
