@@ -31,13 +31,23 @@ class SecondActivity : AppCompatActivity(), OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        instancias()
-        nombre = intent.extras?.getString("nombre")
-        empezar()
-        acciones()
-        puntuacion = savedInstanceState?.getInt("puntuacion")?:0
-        editPuntuacion.setText(puntuacion.toString())
+        if (savedInstanceState == null){
+            instancias()
+            nombre = intent.extras?.getString("nombre")
+            empezar()
+            acciones()
+            puntuacion = savedInstanceState?.getInt("puntuacion")?:0
+            editPuntuacion.setText(puntuacion.toString())
+        }else{
+            imagenFondo = (savedInstanceState?.getInt("listaCartas")?:0) as ImageView
+        }
 
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("listaCartas",listaCartas[aleatorio2])
     }
 
     private fun acciones() {

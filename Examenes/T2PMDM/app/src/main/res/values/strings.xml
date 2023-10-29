@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LauraRubio_T2_PDMD</string>
+    <string name="introduce_tu_peso">introduce tu peso</string>
+    <string name="introduce_tu_altura">introduce tu altura</string>
+    <string name="button_h">H</string>
+    <string name="button_m">M</string>
+    <string name="faltan_datos">FALTAN DATOS!!</string>
+    <string name="ver_IMC">¿Quieres ver tu IMC?</string>
+    <string name="boton_OK">OK</string>
+    <string name="imc">IMC</string>
+</resources>
