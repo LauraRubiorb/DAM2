@@ -1,3 +1,4 @@
+import hilos.Reloj
 import kotlin.concurrent.thread
 
 fun main() {

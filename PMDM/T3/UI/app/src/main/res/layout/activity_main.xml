@@ -55,6 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_correo" />
 
     <androidx.appcompat.widget.AppCompatSpinner
+        android:entries="@array/perfiles"
         android:id="@+id/spinner_perfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -118,7 +119,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:text="Registrar"
+            android:text="Acceder"
             android:layout_marginLeft="20dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
