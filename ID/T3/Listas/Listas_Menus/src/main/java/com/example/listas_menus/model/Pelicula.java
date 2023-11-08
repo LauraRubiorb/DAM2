@@ -15,9 +15,7 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return  "titulo='" + titulo + '\'' +
-                ", genero='" + genero + '\'' +
-                ", año=" + anio;
+        return  titulo;
     }
 
     public String getTitulo() {

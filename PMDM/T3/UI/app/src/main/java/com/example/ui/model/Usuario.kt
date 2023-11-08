@@ -1,14 +1,10 @@
 package com.example.ui.model
 
-class Usuario {
-    private lateinit var nombre: String
-    private lateinit var email : String
-    private lateinit var passw : String
+import java.io.Serializable
 
-    constructor(nombre: String, email: String, passw: String) {
-        this.nombre = nombre
-        this.email = email
-        this.passw = passw
-    }
+class Usuario (var nombre: String, var email : String,var pass : String, var periodo: String, var perfil: String,
+               var recordar : Boolean): Serializable{
+
+
 
 }

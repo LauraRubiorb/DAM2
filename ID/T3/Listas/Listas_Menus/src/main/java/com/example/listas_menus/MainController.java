@@ -34,12 +34,12 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     @FXML
     private RadioMenuItem menuDeshabilitar, menuHabilitar;
     @FXML
-    private MenuItem menuSalir;
+    private MenuItem menuSalir, menuAgregar,menuBorrar;
     private ToggleGroup grupoHabilitar;
     @FXML
     private BorderPane parteCentral;
     @FXML
-    private ListView<?> listView;
+    private ListView<Pelicula> listView;
     private DialogoPersoController dialogoController;
     @FXML
     private ChoiceBox<Pelicula> choice;
@@ -47,11 +47,16 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private ComboBox<String> combo;
     @FXML
     private Spinner<Integer> spinner;
+    @FXML
     private SpinnerValueFactory<Integer> listaSpinner;
+    @FXML
     private ObservableList<String> listaCombo;
+    private ObservableList<Pelicula> listaListView;
+    @FXML
     private ObservableList<Pelicula> listaChoice;
     @FXML
     private Button botonFiltrar;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,6 +83,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 }
             }
         });
+        menuAgregar.setOnAction(this);
+        menuBorrar.setOnAction(this);
         menuSalir.setOnAction(this);
         itemAlerta.setOnAction(this);
         itemWarning.setOnAction(this);
@@ -105,10 +112,17 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println(t1);
             }
         });
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pelicula>() {
+            @Override
+            public void changed(ObservableValue<? extends Pelicula> observableValue, Pelicula pelicula, Pelicula t1) {
+                System.out.println(pelicula.getTitulo());
+            }
+        });
+
+
     }
 
     private void instacias() {
-
         grupoHabilitar = new ToggleGroup();
         grupoHabilitar.getToggles().addAll(menuHabilitar, menuDeshabilitar);
         listaCombo = FXCollections.observableArrayList();
@@ -117,8 +131,11 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         combo.setItems(listaCombo);
         listaChoice.addAll(new Pelicula("pelicula1", "terror", 1997), new Pelicula("peli2", "genero2", 2010), new Pelicula("pelicula3", "genero3", 2005), new Pelicula("peli4", "gen4", 1990));
         choice.setItems(listaChoice);
-        listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,10,5);
+        listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 5);
         spinner.setValueFactory(listaSpinner);
+        listaListView = FXCollections.observableArrayList();
+        listaListView.addAll(new Pelicula("1","1",1),new Pelicula("2","2",2));
+        listView.setItems(listaListView);
 
        /* ObservableList listaOpciones = FXCollections.observableArrayList();
         listaOpciones.addAll("opcion1","opcion2","opcion3");
@@ -219,15 +236,29 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println(respuesta.get().getTitulo());
             }
         } else if (actionEvent.getSource() == botonFiltrar) {
-            if (combo.getSelectionModel().getSelectedIndex()!=-1 && choice.getSelectionModel().getSelectedIndex()!=-1){
+            if (combo.getSelectionModel().getSelectedIndex() != -1 && choice.getSelectionModel().getSelectedIndex() != -1 && choice.getSelectionModel().getSelectedIndex() !=-1)  {
 
                 System.out.println(combo.getSelectionModel().getSelectedItem());
                 System.out.println(choice.getSelectionModel().getSelectedItem().getGenero());
+                System.out.println(listView.getSelectionModel().getSelectedItem().getTitulo());
                 System.out.println(spinner.getValue());
-            }else {
+            } else {
                 System.out.println("No hay nada saleccionado");
             }
 
+        }else if (actionEvent.getSource() == menuAgregar){
+            listaListView.add(new Pelicula("nueva","nueva",3));
+            listView.refresh();
+        } else if (actionEvent.getSource() == menuBorrar) {
+            if (listView.getSelectionModel().getSelectedIndex()>-1){
+            listaListView.remove(listView.getSelectionModel().getSelectedIndex());
+            listView.refresh();
+            listView.getSelectionModel().select(-1);
+            }else {
+                Alert aviso = new Alert(Alert.AlertType.WARNING);
+                aviso.setHeaderText("No hay elemento selecionado");
+                aviso.show();
+            }
         }
 
     }

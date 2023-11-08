@@ -11,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.core.view.get
 import com.example.ui.databinding.ActivityMainBinding
+import com.example.ui.model.Usuario
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), OnClickListener {
@@ -86,7 +87,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                     && !binding.editPass.text!!.isEmpty()
                     &&(!perfil.equals("Invitado") && binding.grupoTipo.checkedRadioButtonId>-1)){
                     val intent = Intent(applicationContext,SecondActivity::class.java)
-                    //intent.putExtra("nombre",binding.editNombre)
+                    val usuario = Usuario(
+                        nombre = binding.editNombre.text.toString(),
+                        email = binding.editCorreo.text.toString(),
+                        pass = binding.editPass.text.toString(),
+                        periodo = (findViewById<RadioButton>(binding.grupoTipo.checkedRadioButtonId).text.toString()),
+                        perfil = binding.spinnerPerfil.selectedItem.toString(),
+                        recordar = binding.checkRecordar.isChecked)
+                    intent.putExtra("usuario",usuario)
                     startActivity(intent)
                 }else{
                     Snackbar.make(binding.root,"FALTAN DATOS!",Snackbar.LENGTH_SHORT).show()
