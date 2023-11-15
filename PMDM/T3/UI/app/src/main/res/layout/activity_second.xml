@@ -11,17 +11,18 @@
         android:id="@+id/text_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/imagen_out"
         app:layout_constraintEnd_toStartOf="@+id/imagen_out"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/boton_add"
         app:layout_constraintTop_toTopOf="@+id/imagen_out"
-        tools:text="Nombre"
-        android:textSize="20dp"/>
+        tools:text="Nombre" />
 
     <ImageButton
+        android:background="@android:color/transparent"
         android:id="@+id/imagen_out"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:scaleType="fitXY"
         android:src="@drawable/out"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,27 +46,36 @@
         app:layout_constraintStart_toStartOf="@+id/spinner_marcas"
         app:layout_constraintTop_toBottomOf="@+id/spinner_marcas" />
 
-    <TextView
-        android:id="@+id/edit_valor"
-        android:text="VALORACION"
-        tools:text="INFORMACION"
-        android:textSize="20dp"
+
+    <ImageButton
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_input_add"
+        android:id="@+id/boton_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/spinner_marcas"
-        app:layout_constraintStart_toStartOf="@+id/spinner_marcas" />
+        app:layout_constraintBottom_toBottomOf="@+id/imagen_out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imagen_out" />
 
-    <ImageView
-        android:id="@+id/imagen_coche"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_modelos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/mini"
-        app:layout_constraintBottom_toTopOf="@+id/edit_valor"
-        app:layout_constraintEnd_toEndOf="@+id/spinner2"
-        app:layout_constraintStart_toStartOf="@+id/spinner2"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
-        app:layout_constraintVertical_bias="0.53" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_filtrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
+    <Button
+        android:id="@+id/button_filtrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

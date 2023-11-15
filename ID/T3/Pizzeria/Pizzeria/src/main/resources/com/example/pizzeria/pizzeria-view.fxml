@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pizzeria.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Acciones">
+            <items>
+              <MenuItem fx:id="itemRealizar" mnemonicParsing="false" text="Realizar Pedido" />
+                  <MenuItem fx:id="itemServir" mnemonicParsing="false" text="Servir Pedido" />
+                  <MenuItem fx:id="itemCaja" mnemonicParsing="false" text="Ver caja" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox fx:id="boxTexts" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="300.0" spacing="30.0">
+         <children>
+            <TextField fx:id="textoNombre" promptText="Introduce nombre:">
+               <VBox.margin>
+                  <Insets left="20.0" top="50.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="textoTelefono" promptText="Introduce numero de telefono:">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </TextField>
+            <ComboBox fx:id="combo" prefWidth="300.0" promptText="Seleccione una pizza">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </ComboBox>
+            <HBox fx:id="boxRadios" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <RadioButton fx:id="radioIndividual" mnemonicParsing="false" text="Individual">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="10.0" top="20.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="radioMediana" mnemonicParsing="false" text="Mediana">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="10.0" top="20.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="radioFamiliar" mnemonicParsing="false" text="Familiar">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+            </HBox>
+            <HBox fx:id="boxButton" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Button fx:id="botonRealizar" mnemonicParsing="false" text="Realizar" />
+                  <Button fx:id="botonServir" mnemonicParsing="false" text="Servir" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </ListView>
+   </right>
+</BorderPane>

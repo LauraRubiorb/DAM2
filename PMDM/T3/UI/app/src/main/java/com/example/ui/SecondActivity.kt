@@ -7,17 +7,33 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ui.adapter.AdaptadorModelos
+import com.example.ui.adapter.AdaptadorRecycler
+import com.example.ui.data.DataSet
 import com.example.ui.databinding.ActivitySecondBinding
 import com.example.ui.model.Marca
+import com.example.ui.model.Modelo
 import com.example.ui.model.Usuario
 import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
 
-class SecondActivity : AppCompatActivity(), OnClickListener {
+/*           RELLENAR UN SPINNER
+    1-ENTRIES:XML -> datos estaticos
+    2-Simple: ArrayAdapter -> datos dinámicos y con la vista vase
+    3-Personalizado-> dinamico y con dif vista: necesitare:
+        -xml
+        -fichero que indique como se rellena el xml : BASEADAPTER
+        */
+
+class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSelectedListener {
     private lateinit var binding: ActivitySecondBinding
     private  var usuario : Usuario? = null
-    private  var marca : Marca? = null
     private lateinit var listaMarcas : ArrayList<Marca>
     private lateinit var adapatadorMarcas : ArrayAdapter<Marca>
+    private lateinit var adapadorModelos : AdaptadorModelos
+    private lateinit var listaModelos : ArrayList<Modelo>
+    private lateinit var adaptadorRecycler: AdaptadorRecycler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +42,18 @@ class SecondActivity : AppCompatActivity(), OnClickListener {
         //instancias
         usuario = intent.extras?.getSerializable("usuario") as Usuario
         listaMarcas = ArrayList()
-        val m1 = Marca("Ford",3.5,R.drawable.ford)
-        val m2 = Marca("Mercedes",4.8,R.drawable.mercedes)
-        val m3 = Marca("Mini",4.5,R.drawable.mini)
-        listaMarcas.add(m1)
-        listaMarcas.add(m2)
-        listaMarcas.add(m3)
+
+        listaMarcas.add(Marca("Audi",4.5,R.drawable.audi))
+        listaMarcas.add(Marca("Mercedes",4.8,R.drawable.mercedes))
+        listaMarcas.add(Marca("Ford",3.5,R.drawable.ford))
+
         adapatadorMarcas = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,listaMarcas)
+        listaModelos = ArrayList()
+        adapadorModelos = AdaptadorModelos(listaModelos,applicationContext)
+
+
+        //pasos para trabajar con un recyclerView
+        adaptadorRecycler = AdaptadorRecycler(DataSet.getListaModelos(),applicationContext)
 
     }
 
@@ -42,15 +63,14 @@ class SecondActivity : AppCompatActivity(), OnClickListener {
             //poner el correo en su sitio
         binding.textNombre.text = usuario?.email?: "Invitado"
         binding.spinnerMarcas.adapter = adapatadorMarcas
+
+
         adapatadorMarcas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        //cambio imagen segun la marca
-        if (marca?.nombre.equals("ford",true)){
-            binding.imagenCoche.setImageResource(R.drawable.ford)
-        }else if (marca?.nombre.equals("mini",true)){
-            binding.imagenCoche.setImageResource(R.drawable.mini)
-        }else if (marca?.nombre.equals("mercedes",true)){
-            binding.imagenCoche.setImageResource(R.drawable.mercedes)
-        }
+        binding.spinner2.adapter = adapadorModelos
+
+        binding.recyclerModelos.adapter = adaptadorRecycler
+        binding.recyclerModelos.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+
 
     }
 
@@ -58,6 +78,9 @@ class SecondActivity : AppCompatActivity(), OnClickListener {
         super.onResume()
         //acciones
         binding.imagenOut.setOnClickListener(this)
+        binding.spinnerMarcas.onItemSelectedListener = this
+        binding.spinner2.onItemSelectedListener = this
+        binding.botonAdd.setOnClickListener(this)
 
     }
 
@@ -66,7 +89,46 @@ class SecondActivity : AppCompatActivity(), OnClickListener {
             binding.imagenOut.id->{
                 finish()
             }
+            binding.botonAdd.id->{
+                //añadir un modelo ->adaptador
+                adapadorModelos.addModelo(Modelo ("E-tron","Mercedes",400,150000,"Electruco",R.drawable.mercedesbenz))
+            }
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        when(parent?.id){
+            binding.spinnerMarcas.id->{
+                val marca1 = binding.spinnerMarcas.selectedItem as Marca
+                var lista : ArrayList<Modelo> = ArrayList()
+                if (marca1.nombre.equals("Mercedes")){
+                    //DataSet.getListaModelos().filter { it.marca.equals("Mercedes",true) }as ArrayList<Modelo>
+
+
+                    lista.add(Modelo("Benz","Mercedes",300,40000,"Familiar",R.drawable.mercedesbenz))
+                    lista.add(Modelo("220","Mercedes",400,250000,"Deportivo",R.drawable.mercedes220))
+                }else if (marca1.nombre.equals("Audi")){
+                    lista.add(Modelo("RS6","Audi",340,150500,"Deportivo",R.drawable.audirs6))
+                    lista.add(Modelo("Etron","Audio",450,600000,"Clasico",R.drawable.audietron))
+
+                }else if (marca1.nombre.equals("Ford")){
+                    lista.add(Modelo("GT40","Ford",300,100000,"Clasico",R.drawable.fordgt))
+                    lista.add(Modelo("Mustang","Ford",400,500000,"Deportivo",R.drawable.fordmust))
+
+                }
+                adapadorModelos.setLista(lista)
+
+
+            }
+            binding.spinner2.id->{
+                val modelo = binding.spinner2.selectedItem as Modelo
+
+            }
+        }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        parent?.adapter?.getItem(binding.spinner2.selectedItemPosition)
     }
 
 }
