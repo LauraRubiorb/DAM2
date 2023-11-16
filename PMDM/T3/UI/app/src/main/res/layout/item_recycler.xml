@@ -18,8 +18,8 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:src="@drawable/audi"
-        app:layout_constraintBottom_toTopOf="@+id/button_verDetalle"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,16 +43,32 @@
         app:layout_constraintTop_toBottomOf="@+id/text_modelo"
         tools:text="Precio" />
 
-    <Button
-        android:id="@+id/button_verDetalle"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linear_comparar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Ver Detalle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagen_modelo" />
+        app:layout_constraintTop_toBottomOf="@+id/imagen_modelo">
+
+        <Button
+            android:id="@+id/boton_detalle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Ver Detalle" />
+
+        <Button
+            android:text="Comparar"
+            android:id="@+id/boton_comparar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

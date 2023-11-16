@@ -26,7 +26,7 @@ import com.google.android.material.navigation.NavigationBarView.OnItemSelectedLi
         -fichero que indique como se rellena el xml : BASEADAPTER
         */
 
-class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSelectedListener {
+class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSelectedListener, AdaptadorRecycler.OnModeloListener {
     private lateinit var binding: ActivitySecondBinding
     private  var usuario : Usuario? = null
     private lateinit var listaMarcas : ArrayList<Marca>
@@ -34,6 +34,8 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
     private lateinit var adapadorModelos : AdaptadorModelos
     private lateinit var listaModelos : ArrayList<Modelo>
     private lateinit var adaptadorRecycler: AdaptadorRecycler
+    private var  modelo1 : Modelo ? = null
+    private var  modelo2 : Modelo ? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +51,11 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
 
         adapatadorMarcas = ArrayAdapter(applicationContext,android.R.layout.simple_spinner_item,listaMarcas)
         listaModelos = ArrayList()
-        adapadorModelos = AdaptadorModelos(listaModelos,applicationContext)
+        adapadorModelos = AdaptadorModelos(DataSet.getListaModelos(),this)
 
 
         //pasos para trabajar con un recyclerView
-        adaptadorRecycler = AdaptadorRecycler(DataSet.getListaModelos(),applicationContext)
+        adaptadorRecycler = AdaptadorRecycler(DataSet.getListaModelos(),this)
 
     }
 
@@ -91,7 +93,7 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
             }
             binding.botonAdd.id->{
                 //añadir un modelo ->adaptador
-                adapadorModelos.addModelo(Modelo ("E-tron","Mercedes",400,150000,"Electruco",R.drawable.mercedesbenz))
+               // adapadorModelos.addModelo(Modelo ("E-tron","Mercedes",400,150000,"Electruco",R.drawable.mercedesbenz))
             }
         }
     }
@@ -105,15 +107,15 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
                     //DataSet.getListaModelos().filter { it.marca.equals("Mercedes",true) }as ArrayList<Modelo>
 
 
-                    lista.add(Modelo("Benz","Mercedes",300,40000,"Familiar",R.drawable.mercedesbenz))
-                    lista.add(Modelo("220","Mercedes",400,250000,"Deportivo",R.drawable.mercedes220))
+                    //lista.add(Modelo("Benz","Mercedes",300,40000,"Familiar",R.drawable.mercedesbenz))
+                    //lista.add(Modelo("220","Mercedes",400,250000,"Deportivo",R.drawable.mercedes220))
                 }else if (marca1.nombre.equals("Audi")){
-                    lista.add(Modelo("RS6","Audi",340,150500,"Deportivo",R.drawable.audirs6))
-                    lista.add(Modelo("Etron","Audio",450,600000,"Clasico",R.drawable.audietron))
+                    //lista.add(Modelo("RS6","Audi",340,150500,"Deportivo",R.drawable.audirs6))
+                    //lista.add(Modelo("Etron","Audio",450,600000,"Clasico",R.drawable.audietron))
 
                 }else if (marca1.nombre.equals("Ford")){
-                    lista.add(Modelo("GT40","Ford",300,100000,"Clasico",R.drawable.fordgt))
-                    lista.add(Modelo("Mustang","Ford",400,500000,"Deportivo",R.drawable.fordmust))
+                    //lista.add(Modelo("GT40","Ford",300,100000,"Clasico",R.drawable.fordgt))
+                    //lista.add(Modelo("Mustang","Ford",400,500000,"Deportivo",R.drawable.fordmust))
 
                 }
                 adapadorModelos.setLista(lista)
@@ -129,6 +131,23 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         parent?.adapter?.getItem(binding.spinner2.selectedItemPosition)
+    }
+
+    override fun onModeloSelected(modelo: Modelo) {
+        if (modelo1==null){
+            binding.imagenComparar1.setImageResource(modelo.imagen)
+            modelo1 = modelo
+        }
+        else if (modelo1!=null && modelo2 == null){
+            modelo2 = modelo
+            binding.imagenComparar2.setImageResource(modelo.imagen)
+        }else{
+            modelo1 = modelo2
+            binding.imagenComparar1.setImageResource(modelo1!!.imagen)
+            modelo2 = modelo
+            binding.imagenComparar2.setImageResource(modelo.imagen)
+
+        }
     }
 
 }

@@ -4,34 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="20dp"
+    tools:context=".DetailActivity">
+
 
     <ImageView
         android:id="@+id/imagen_marca"
-        android:layout_width="177dp"
-        android:layout_height="228dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
         android:src="@drawable/audi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagen_modelo" />
 
     <ImageView
         android:id="@+id/imagen_modelo"
         android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="0dp"
         android:src="@drawable/audietron"
-        app:layout_constraintEnd_toStartOf="@+id/imagen_marca"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/nombre_modelo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginRight="20dp"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagen_marca"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagen_marca"
-        tools:text="precio"
-        android:textSize="20dp"/>
+        app:layout_constraintTop_toTopOf="@+id/imagen_marca"
+        tools:text="nombre" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="185dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
