@@ -1,9 +1,6 @@
 package com.example.listas_menus;
 
 import com.example.listas_menus.model.Pelicula;
-import com.example.listas_menus.model.PeliculaJSON;
-import com.google.gson.Gson;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -24,8 +20,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,12 +38,12 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     @FXML
     private RadioMenuItem menuDeshabilitar, menuHabilitar;
     @FXML
-    private MenuItem menuSalir, menuAgregar, menuBorrar;
+    private MenuItem menuSalir, menuAgregar,menuBorrar;
     private ToggleGroup grupoHabilitar;
     @FXML
     private BorderPane parteCentral;
     @FXML
-    private ListView<PeliculaJSON> listView;
+    private ListView<Pelicula> listView;
     private DialogoPersoController dialogoController;
     @FXML
     private ChoiceBox<Pelicula> choice;
@@ -61,54 +55,30 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     private SpinnerValueFactory<Integer> listaSpinner;
     @FXML
     private ObservableList<String> listaCombo;
-    private ObservableList<PeliculaJSON> listaListView;
+    private ObservableList<Pelicula> listaListView;
     @FXML
     private ObservableList<Pelicula> listaChoice;
     @FXML
-    private Button botonFiltrar, verDetalle;
-
-    private ObservableList<PeliculaJSON> listaTabla;
-    @FXML
-    private TableColumn<?, ?> columnaAdultos;
-
-    @FXML
-    private TableColumn<?, ?> columnaMedia;
-
-    @FXML
-    private TableColumn<?, ?> columnaTitulo;
-
-    @FXML
-    private TableColumn<?, ?> columnaVotos;
-    @FXML
-    private TableView<PeliculaJSON> tabla;
+    private Button botonFiltrar;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         instacias();
-        setTablaDatos();
-        //obtenerPeliculas();
+        obtenerPeliculas();
         personalizarMenu();
         acciones();
 
     }
-
-    private void setTablaDatos() {
-        columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
-        columnaAdultos.setCellValueFactory(new PropertyValueFactory<>("adult"));
-        columnaMedia.setCellValueFactory(new PropertyValueFactory<>("vote_average"));
-        columnaVotos.setCellValueFactory(new PropertyValueFactory<>("vote_count"));
-    }
-
     private void obtenerPeliculas() {
 
         try {
             URL url = new URL("https://api.themoviedb.org/3/movie/now_playing?api_key=4ef66e12cddbb8fe9d4fd03ac9632f6e&language=es-ES&page=1");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String linea = null;
+            String linea =  null;
             StringBuffer stringBuffer = new StringBuffer();
-            while ((linea = reader.readLine()) != null) {
+            while ((linea=reader.readLine())!=null){
                 stringBuffer.append(linea);
             }
 
@@ -121,10 +91,8 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 // sacar cada uno de los atributos y
                 //PeliculaJSON peliculaJSON = new PeliculaJSON();
                 Gson gson = new Gson();
-                PeliculaJSON peliculaJSON = gson.fromJson(pelicula.toString(), PeliculaJSON.class);
+                PeliculaJSON peliculaJSON =gson.fromJson(pelicula.toString(), PeliculaJSON.class);
                 System.out.println(peliculaJSON.getTitle());
-                listaListView.add(peliculaJSON);
-
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -151,7 +119,6 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
             }
         });
         menuAgregar.setOnAction(this);
-        verDetalle.setOnAction(this);
         menuBorrar.setOnAction(this);
         menuSalir.setOnAction(this);
         itemAlerta.setOnAction(this);
@@ -180,11 +147,10 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println(t1);
             }
         });
-        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PeliculaJSON>() {
-
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pelicula>() {
             @Override
-            public void changed(ObservableValue<? extends PeliculaJSON> observableValue, PeliculaJSON peliculaJSON, PeliculaJSON t1) {
-
+            public void changed(ObservableValue<? extends Pelicula> observableValue, Pelicula pelicula, Pelicula t1) {
+                System.out.println(pelicula.getTitulo());
             }
         });
 
@@ -192,10 +158,6 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     }
 
     private void instacias() {
-        tabla.setItems(listaTabla);
-
-        //-------------------------
-        verDetalle.setDisable(true);
         grupoHabilitar = new ToggleGroup();
         grupoHabilitar.getToggles().addAll(menuHabilitar, menuDeshabilitar);
         listaCombo = FXCollections.observableArrayList();
@@ -207,6 +169,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         listaSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 5);
         spinner.setValueFactory(listaSpinner);
         listaListView = FXCollections.observableArrayList();
+        listaListView.addAll(new Pelicula("1","1",1),new Pelicula("2","2",2));
         listView.setItems(listaListView);
 
        /* ObservableList listaOpciones = FXCollections.observableArrayList();
@@ -308,7 +271,7 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println(respuesta.get().getTitulo());
             }
         } else if (actionEvent.getSource() == botonFiltrar) {
-           /* if (combo.getSelectionModel().getSelectedIndex() != -1 && choice.getSelectionModel().getSelectedIndex() != -1 && choice.getSelectionModel().getSelectedIndex() !=-1)  {
+            if (combo.getSelectionModel().getSelectedIndex() != -1 && choice.getSelectionModel().getSelectedIndex() != -1 && choice.getSelectionModel().getSelectedIndex() !=-1)  {
 
                 System.out.println(combo.getSelectionModel().getSelectedItem());
                 System.out.println(choice.getSelectionModel().getSelectedItem().getGenero());
@@ -316,49 +279,17 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
                 System.out.println(spinner.getValue());
             } else {
                 System.out.println("No hay nada saleccionado");
-            }*/
-            //hilos para que no se pille
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    obtenerPeliculas();
-                    verDetalle.setDisable(false);
-                }
-            });
-
-
-        } else if (actionEvent.getSource() == verDetalle) {
-            if (listView.getSelectionModel().getSelectedIndex()!=-1){
-                Dialog dialog = new Dialog();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("detalles-view.fxml"));
-                Parent root = null;
-                try {
-                    root = loader.load();
-                    //asocio parte log y graf
-                    dialog.getDialogPane().setContent(root);
-                    DetalleController detalleController = loader.getController();
-                    detalleController.setPeliculaData(listView.getSelectionModel().getSelectedItem());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                dialog.getDialogPane().getButtonTypes().setAll(ButtonType.CLOSE);
-                dialog.show();
-            }else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("No has seleccionado ninguna pelicula");
-                alert.show();
             }
 
-
-        } else if (actionEvent.getSource() == menuAgregar) {
-            /*listaListView.add(new Pelicula("nueva","nueva",3));
-            listView.refresh();*/
+        }else if (actionEvent.getSource() == menuAgregar){
+            listaListView.add(new Pelicula("nueva","nueva",3));
+            listView.refresh();
         } else if (actionEvent.getSource() == menuBorrar) {
-            if (listView.getSelectionModel().getSelectedIndex() > -1) {
-                listaListView.remove(listView.getSelectionModel().getSelectedIndex());
-                listView.refresh();
-                listView.getSelectionModel().select(-1);
-            } else {
+            if (listView.getSelectionModel().getSelectedIndex()>-1){
+            listaListView.remove(listView.getSelectionModel().getSelectedIndex());
+            listView.refresh();
+            listView.getSelectionModel().select(-1);
+            }else {
                 Alert aviso = new Alert(Alert.AlertType.WARNING);
                 aviso.setHeaderText("No hay elemento selecionado");
                 aviso.show();
