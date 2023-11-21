@@ -13,6 +13,7 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -79,6 +80,13 @@
                </columnResizePolicy>
             </TableView>
          </center>
+         <bottom>
+            <TextField fx:id="textoFiltrar" promptText="Por favor introduce titulo para filtrar" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="20.0" />
+               </BorderPane.margin>
+            </TextField>
+         </bottom>
       </BorderPane>
    </center>
    <right>
@@ -89,8 +97,23 @@
       </ListView>
    </right>
    <bottom>
-      <HBox alignment="CENTER" spacing="180.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
+            <Button fx:id="botonAdd" mnemonicParsing="false" text="Añadir">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="botonObtener" mnemonicParsing="false" text="Obtener">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="botonBorrar" mnemonicParsing="false" text="Borrar">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
             <Button fx:id="botonFiltrar" mnemonicParsing="false" text="Filtrar" />
             <Button fx:id="verDetalle" mnemonicParsing="false" text="Ver Detalle">
                <HBox.margin>
@@ -98,6 +121,9 @@
                </HBox.margin>
             </Button>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
    </bottom>
    <padding>
