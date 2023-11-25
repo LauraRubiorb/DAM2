@@ -21,10 +21,11 @@ public class MainController implements Initializable {
     private Button botonComunicar;
     @FXML
     private TextField textoNombre;
+    @FXML
+    private Label textoRespuesta;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String nombre = textoNombre.getText();
         botonComunicar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -35,6 +36,9 @@ public class MainController implements Initializable {
                 // 2.crear escena y asociarla al root
                 try {
                     Parent root = loader.load();
+                    //comunicar paso2. obtener la controladora del destino y ejecuto el metodo.
+                    SecondController secondController = loader.getController();
+                    secondController.comunicarNombre(textoNombre.getText());
                     Scene scene = new Scene(root,botonComunicar.getScene().getWidth(),botonComunicar.getScene().getHeight());
                     // 3. poner la escena en la ventana
                     //para sacar el stage necesito un elemento grafico:
@@ -43,8 +47,13 @@ public class MainController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+
             }
         });
+
+
+    }
+    public void setRespuesta(){
 
     }
 }

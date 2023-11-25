@@ -2,6 +2,7 @@ package com.example.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
@@ -17,6 +18,7 @@ import com.example.ui.model.Marca
 import com.example.ui.model.Modelo
 import com.example.ui.model.Usuario
 import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
+import com.google.android.material.snackbar.Snackbar
 
 /*           RELLENAR UN SPINNER
     1-ENTRIES:XML -> datos estaticos
@@ -39,6 +41,14 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //recuperar al girar
+        modelo1 = savedInstanceState?.getSerializable("modelo1") as Modelo?
+        modelo2 = savedInstanceState?.getSerializable("modelo2") as Modelo?
+
+        modelo1?.let { binding.imagenComparar1.setImageResource(it.imagen) }
+        modelo2?.let { binding.imagenComparar2.setImageResource(it.imagen) }
+
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //instancias
@@ -57,6 +67,12 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
         //pasos para trabajar con un recyclerView
         adaptadorRecycler = AdaptadorRecycler(DataSet.getListaModelos(),this)
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable("modelo1",modelo1)
+        outState.putSerializable("modelo2",modelo2)
     }
 
     override fun onStart() {
@@ -92,8 +108,15 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
                 finish()
             }
             binding.botonAdd.id->{
-                //añadir un modelo ->adaptador
-               // adapadorModelos.addModelo(Modelo ("E-tron","Mercedes",400,150000,"Electruco",R.drawable.mercedesbenz))
+                //sacar un snackbar indicando cual es mas caro
+                lateinit var modeloCaro : Modelo
+                if (modelo1!!.precio > modelo2!!.precio){
+                    modeloCaro = modelo1!!
+                }else if (modelo1!!.precio > modelo2!!.precio){
+                    modeloCaro = modelo2!!
+                }
+                Snackbar.make(binding.root,"el modelo mas caro es ${modeloCaro.nombre}",Snackbar.LENGTH_LONG).show()
+
             }
         }
     }
@@ -130,7 +153,7 @@ class SecondActivity : AppCompatActivity(), OnClickListener,AdapterView.OnItemSe
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        parent?.adapter?.getItem(binding.spinner2.selectedItemPosition)
+        //parent?.adapter?.getItem(binding.spinner2.selectedItemPosition)
     }
 
     override fun onModeloSelected(modelo: Modelo) {

@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.example.ui.DetailActivity
 import com.example.ui.R
 import com.example.ui.model.Modelo
@@ -52,7 +53,8 @@ class AdaptadorRecycler (var lista : ArrayList<Modelo>, var contexto : Context):
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         //especificar los patrones y juntar los datos
         val item : Modelo = lista[position]
-        holder.imagen.setImageResource(item.imagen)
+        //holder.imagen.setImageResource(item.imagen)
+        Glide.with(contexto).load(item.imagenURL).placeholder(R.drawable.generico).into(holder.imagen)
         holder.nombre.text = item.nombre
         holder.precio.text = item.precio.toString()
         holder.botonComparar.setOnClickListener{

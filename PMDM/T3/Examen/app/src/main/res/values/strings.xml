@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Laura_Rubio_DAM2</string>
+    <string-array name="puntuaciones">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="comidas">
+        <item>Mediterranea</item>
+        <item>China</item>
+        <item>Italiana</item>
+        <item>Japones</item>
+    </string-array>
+    <string-array name="localidad">
+        <item>Madrid</item>
+        <item>Alcobendas</item>
+        <item>Pozuelo</item>
+        <item>Alcorcon</item>
+        <item>Majadahonda</item>
+    </string-array>
+</resources>

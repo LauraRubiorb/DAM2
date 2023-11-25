@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ComprasApp</string>
+    <array name="Perfiles">
+        <item>Usuario</item>
+        <item>Invitado</item>
+    </array>
+    <array name="Marcas">
+        <item>Todas</item>
+        <item>Nike</item>
+        <item>Adidas</item>
+    </array>
+</resources>
