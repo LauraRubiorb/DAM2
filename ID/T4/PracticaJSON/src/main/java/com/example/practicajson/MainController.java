@@ -4,10 +4,10 @@ import com.example.practicajson.model.CategoriasJSON;
 import com.example.practicajson.model.ComidasJSON;
 import com.google.gson.Gson;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,10 +23,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-
 public class MainController implements Initializable, EventHandler<ActionEvent> {
-
     @FXML
     private Button botonDetalle1, botonDetalle2;
     @FXML
@@ -166,7 +163,6 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
     }
 
 
-
     @Override
     public void handle(ActionEvent actionEvent) {
 //MENU SALIR
@@ -175,13 +171,50 @@ public class MainController implements Initializable, EventHandler<ActionEvent> 
         }
 //BOTON DETALLE 1
         else if (actionEvent.getSource() == botonDetalle1) {
+            if (tablaCategorias.getSelectionModel().getSelectedIndex() != -1) {
+                Dialog dialog = new Dialog();
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("detalleCategorias-view.fxml"));
+                    Parent root = null;
+                    root = loader.load();
+                    dialog.getDialogPane().setContent(root);
+                    DetalleCategoriasController detalle = loader.getController();
+                    detalle.setDetallesCategory(tablaCategorias.getSelectionModel().getSelectedItem());
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                dialog.getDialogPane().getButtonTypes().setAll(ButtonType.CLOSE);
+                dialog.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText("No has seleccionado datos");
+                alert.show();
+            }
 
         }
 //BOTON DETALLE 2
         else if (actionEvent.getSource() == botonDetalle2) {
+            if (listaComidas.getSelectionModel().getSelectedIndex() != -1) {
+                Dialog dialog = new Dialog();
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("detalleComida-view.fxml"));
+                    Parent root = null;
+                    root = loader.load();
+                    dialog.getDialogPane().setContent(root);
+                    DetalleComidaController detalle = loader.getController();
+                    detalle.setDetalleComida(listaComidas.getSelectionModel().getSelectedItem());
 
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                dialog.getDialogPane().getButtonTypes().setAll(ButtonType.CLOSE);
+                dialog.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText("No has seleccionado datos");
+                alert.show();
+            }
         }
-
-
     }
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4c34fb9-f495-40ac-9aa5-849410c52e6b" name="Changes" comment="" />
+    <list default="true" id="eef92edd-7226-457d-ace6-77a2a32ad4c7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +14,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -24,7 +23,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2YfUY1v6228FOofYBV8pG5hHgeD" />
+  <component name="ProjectId" id="2Yj5ZUtP4pyM2gQDCVdn2hSs2Kg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,11 +37,11 @@
 }</component>
   <component name="RunManager">
     <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.practicajson.MainApplication" />
-      <module name="PracticaJSON" />
+      <option name="MAIN_CLASS_NAME" value="com.example.practicajson2.MainApplication" />
+      <module name="PracticaJSON2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.practicajson.*" />
+          <option name="PATTERN" value="com.example.practicajson2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -59,11 +58,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c4c34fb9-f495-40ac-9aa5-849410c52e6b" name="Changes" comment="" />
-      <created>1700916172687</created>
+      <changelist id="eef92edd-7226-457d-ace6-77a2a32ad4c7" name="Changes" comment="" />
+      <created>1701026204710</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1700916172687</updated>
+      <updated>1701026204710</updated>
     </task>
     <servers />
   </component>
