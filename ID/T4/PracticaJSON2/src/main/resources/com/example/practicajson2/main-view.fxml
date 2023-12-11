@@ -100,7 +100,7 @@
             <TableView fx:id="tablaBebidas" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="columnName" prefWidth="75.0" text="NOMBRE" />
+                <TableColumn fx:id="columnName" prefWidth="283.33331298828125" text="NOMBRE" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

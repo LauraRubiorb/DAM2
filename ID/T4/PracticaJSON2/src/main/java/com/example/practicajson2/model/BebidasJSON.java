@@ -1,16 +1,22 @@
 package com.example.practicajson2.model;
 
-public class BebidaSin {
+public class BebidasJSON {
+
     String strDrink ;//nombreBebida
     String strDrinkThumb;//imagen
     int  idDrink; //id
 
-    public BebidaSin() {
+    public BebidasJSON() {
     }
 
-    public BebidaSin(String strDrink, int idDrink) {
+    public BebidasJSON(String strDrink, int idDrink) {
         this.strDrink = strDrink;
         this.idDrink = idDrink;
+    }
+
+    @Override
+    public String toString() {
+        return strDrink;
     }
 
     public String getStrDrink() {
