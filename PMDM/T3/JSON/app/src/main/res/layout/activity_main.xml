@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.proyectojson.MainActivity">
 
     <Spinner
         android:id="@+id/spinnerGenero"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerNumeros"
+        android:id="@+id/spinnerResultados"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
@@ -28,13 +28,11 @@
         app:layout_constraintTop_toTopOf="@+id/spinnerGenero" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/recyclerUsuarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-
-
-        app:layout_constraintEnd_toEndOf="@+id/spinnerNumeros"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerResultados"
         app:layout_constraintStart_toStartOf="@+id/spinnerGenero"
         app:layout_constraintTop_toBottomOf="@+id/spinnerGenero" />
 

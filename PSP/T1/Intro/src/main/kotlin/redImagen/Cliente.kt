@@ -33,4 +33,8 @@ fun main() {
     output.close()
     socket.close()
 
-}
+    //CONCEPTOS BASICOS COMUNICACIÓNE NTRE APP:
+        //DIRECCION IP/ TCP: seguro Y UDP: malo, no hace falta comunicacion: es muy rapido
+}       //SOCKETS
+        //MODELOS DE COMUNICACIONES
+        //computacion distribuida

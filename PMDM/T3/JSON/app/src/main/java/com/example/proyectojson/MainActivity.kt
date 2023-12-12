@@ -1,8 +1,8 @@
 package com.example.proyectojson
 
+import android.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -10,121 +10,150 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.example.proyectojson.adaptador.AdaptadorUsers
+import com.example.proyectojson.adaptador.UsuariosAdapter
 import com.example.proyectojson.databinding.ActivityMainBinding
 import com.example.proyectojson.model.User
-import org.json.JSONArray
-import org.json.JSONObject
-import java.io.BufferedReader
+import com.example.proyectojson.ui.dialog.FiltrarDialog
+import com.example.proyectojson.ui.dialog.VersionDialog
+import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity() , OnItemSelectedListener{
+
+import org.json.JSONObject
+
+class MainActivity : AppCompatActivity(), OnItemSelectedListener, FiltrarDialog.OnFiltradoDialogListener {
+
+    private lateinit var listaUsuario: ArrayList<User>;
+    private lateinit var adaptadoUsuariosAdapter: UsuariosAdapter
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: AdaptadorUsers
-    private lateinit var listaUsers: ArrayList<User>
-    private lateinit var adapatadorResultados: ArrayAdapter<Int>
-    private lateinit var genero : String
-    private var resultado : Int = 0
+    private lateinit var adaptadorResultados: ArrayAdapter<Int>
+    private lateinit var genero: String;
+    private  var resultados: Int = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        listaUsers = ArrayList()
-
-        adapter = AdaptadorUsers(listaUsers, this)
-        binding.recycler.adapter = adapter
-        binding.recycler.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-
-        adapatadorResultados = ArrayAdapter(this,android.R.layout.simple_spinner_item,(1..100).toList())
-        adapatadorResultados.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerNumeros.adapter = adapatadorResultados
-
-        //creamos la peticion
 
 
-        val url = "https://randomuser.me/api/?results=50"
+        adaptadorResultados = ArrayAdapter(applicationContext,
+            R.layout.simple_spinner_item,(1..100).toList())
+        adaptadorResultados.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+        binding.spinnerResultados.adapter = adaptadorResultados
 
-        //activar el internet
+        listaUsuario = ArrayList();
+        adaptadoUsuariosAdapter = UsuariosAdapter(listaUsuario, this)
 
-        val peticion: JsonObjectRequest = JsonObjectRequest(url,
-            {
-                Log.v("conexion", "conexion correcta")
-                getUsers(it)
-            }, {
-                Log.v("conexion", "conexion incorrecta")
+        binding.recyclerUsuarios.adapter = adaptadoUsuariosAdapter;
+        binding.recyclerUsuarios.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
-            }) //url+primerObjeto+errores
+        // creo la peticion
 
-        //lanzamos la peticion
+    }
 
+    fun getURLResponse(url: String): Unit {
+
+        val peticion: JsonObjectRequest = JsonObjectRequest(url, {
+            getUsers(it)
+        }, {
+
+        })
+        //val peticion2: JsonObjectRequest = JsonObjectRequest(Method.GET,url,null,{},{})
+        // lanzar la peticion
         Volley.newRequestQueue(applicationContext).add(peticion)
-
-
-        //otra peticion para configurar parametros
-        //val peticion2 : JsonObjectRequest = JsonObjectRequest(Request.Method.GET,url,null,{},{})
-
-    }
-
-
-
-    fun getUsers(response: JSONObject): Unit {
-        val results = response.getJSONArray("results")
-        for (i in (0..results.length() - 1)) {
-            val user = results.getJSONObject(i)
-            val first = user.getJSONObject("name").getString("first")
-            val last = user.getJSONObject("name").getString("last")
-            val phone = user.getString("phone")
-            val email = user.getString("email")
-            val image = user.getJSONObject("picture").getString("medium")
-            val country = user.getJSONObject("location").getString("country")
-            val city = user.getJSONObject("location").getString("city")
-
-
-            listaUsers.add(User(first, last, phone, country, city,  email, image))
-            adapter.notifyItemInserted(listaUsers.size-1)
-        }
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //traer el menu -> xml
-        menuInflater.inflate(R.menu.main_menu,menu)
-
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    //gestionar la pulsacion del menu
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.menu_reset->{
-                //cambiar spinners
-                //cambiar url
-            }
-
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {
         super.onStart()
+        binding.spinnerResultados.onItemSelectedListener = this
+        binding.spinnerGenero.onItemSelectedListener = this
     }
+
+    fun getUsers(response: JSONObject): Unit {
+        // crear clase modelo User
+        // obtener una lista de todos los usuarios del JSON
+        val results = response.getJSONArray("results")
+        for (i in (0..results.length() - 1)) {
+            val user = results.getJSONObject(i);
+            val name = user.getJSONObject("name").getString("first")
+            val last = user.getJSONObject("name").getString("last")
+            val phone = user.getString("phone");
+            val email = user.getString("email");
+            val image = user.getJSONObject("picture").getString("medium")
+            val country = user.getJSONObject("location").getString("country")
+
+            val city = user.getJSONObject("location").getString("city")
+            val usuario = User(name, last, email, phone, country, city, image)
+            listaUsuario.add(
+                usuario
+            )
+            adaptadoUsuariosAdapter.notifyItemInserted(listaUsuario.size - 1)
+        }
+        // nombre, apellido, telefono, pais, ciudad, codigo postal, mail
+
+    }
+
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        TODO("Not yet implemented")
+        when(parent!!.id){
+            binding.spinnerResultados.id->{
+                resultados = parent.adapter.getItem(position).toString().toInt()
+                // peticion
+            }
+            binding.spinnerGenero.id->{
+                genero = parent.adapter.getItem(position).toString()
+                // peticion
+            }
+        }
+
+        listaUsuario.clear()
+        adaptadoUsuariosAdapter.notifyDataSetChanged()
+
+        getURLResponse("https://randomuser.me/api/?results=${resultados}&gender=${genero.toLowerCase()}")
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+
     }
 
-    //HACER: si pulsas en cualquier lado longclick: sale un snacbar -> quieres ver los detalles del usuario OK
-    //segunda pantalla con la imagen del user, icono de email y sale email, lo mismo con telefono, y abajo cargamos la
-    //direccion completa
-    //si pulsa en el text de email arranca email poniendo PARA: y el nombre de email sendTo()
-    // y el de telefono actionCall()
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        // traer el menu -> xml
+        //menuInflater.inflate(R.menu.,menu)
+        menuInflater.inflate(com.example.proyectojson.R.menu.menu_main , menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            com.example.proyectojson.R.id.menu_reset->{
+                getURLResponse("https://randomuser.me/api/?results=50");
+                binding.spinnerResultados.setSelection(49)
+                binding.spinnerGenero.setSelection(0)
+            }
+            com.example.proyectojson.R.id.menu_version->{
+                val versionDialog: VersionDialog = VersionDialog();
+                versionDialog.show(supportFragmentManager,null)
+            }
+            com.example.proyectojson.R.id.menu_filtrar->{
+                val filtroDialog : FiltrarDialog = FiltrarDialog()
+                filtroDialog.show(supportFragmentManager,null)
+            }
+        }
+        return true
+    }
+
+    override fun onGeneroSelected(genero: String) {
+        Snackbar.make(binding.root,"seleccionado ${genero}",Snackbar.LENGTH_SHORT).show()
+
+        //PARA EL JUEVES:
+        /*
+        el menu filtrar -> pulsar aparece un cuadro de dialogo donde te dice, porque quieres filtrar : -genero -numero
+        -genero -> el cuadro de dialgoo ya hecho y hacer el filtro
+        -num -> que cantidad quieres mostrar 1    50    100 y filtrar, cuadro dialgo
+         */
+    }
 }
