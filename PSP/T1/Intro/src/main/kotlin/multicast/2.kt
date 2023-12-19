@@ -5,7 +5,7 @@ import java.net.InetAddress
 import java.net.MulticastSocket
 
 fun main() {
-    val multicastGroup = "224.0.0.1" // Grupo de multicast al que te quieres unir
+    val multicastGroup = "224.0.0.251" // Grupo de multicast al que te quieres unir
     val multicastPort = 5000 // Puerto del grupo de multicast
     val messageToSend = "¡Hola a to2!" // Mensaje a enviar
 

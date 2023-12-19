@@ -17,6 +17,11 @@ import com.google.android.material.snackbar.Snackbar
 class UsuariosAdapter(var listaUsers: ArrayList<User>, var context: Context) :
     RecyclerView.Adapter<UsuariosAdapter.MyHolder>() {
 
+    private lateinit var listener: OnUserListener
+    init {
+        listener = context as OnUserListener
+    }
+
     class MyHolder(item: View) : RecyclerView.ViewHolder(item) {
         var textoNombre: TextView
         var textoApellido: TextView
@@ -26,6 +31,7 @@ class UsuariosAdapter(var listaUsers: ArrayList<User>, var context: Context) :
             textoNombre = item.findViewById(R.id.textName)
             textoApellido = item.findViewById(R.id.textSurname)
             imagen = item.findViewById(R.id.imagen)
+
         }
     }
 
@@ -48,6 +54,9 @@ class UsuariosAdapter(var listaUsers: ArrayList<User>, var context: Context) :
         holder.textoNombre.setText(item.first)
         holder.textoApellido.setText(item.last)
         Glide.with(context).load(item.picture).into(holder.imagen)
+        holder.textoNombre.setOnClickListener {
+            listener.onUserSelected(item)
+        }
         holder.imagen.setOnLongClickListener {
 
             Snackbar.make(
@@ -64,5 +73,8 @@ class UsuariosAdapter(var listaUsers: ArrayList<User>, var context: Context) :
             return@setOnLongClickListener true
         }
 
+    }
+    interface OnUserListener{
+        fun onUserSelected(user : User)
     }
 }

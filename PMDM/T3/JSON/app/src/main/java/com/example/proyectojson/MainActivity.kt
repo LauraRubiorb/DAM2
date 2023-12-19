@@ -17,6 +17,7 @@ import com.example.proyectojson.adaptador.UsuariosAdapter
 import com.example.proyectojson.databinding.ActivityMainBinding
 import com.example.proyectojson.model.User
 import com.example.proyectojson.ui.dialog.GeneroSimpleDialog
+import com.example.proyectojson.ui.dialog.InfoDialog
 import com.example.proyectojson.ui.dialog.ListaGeneroDialog
 import com.example.proyectojson.ui.dialog.NacionalidadDialog
 import com.example.proyectojson.ui.dialog.NumerosDialog
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener,
     GeneroSimpleDialog.OnGeneroSimpleListener,
     NumerosDialog.OnNumerosDialogListener,
     ListaGeneroDialog.OnGeneroListaListener, GeneralDialog.OnGeneralDialogListener,
-    NacionalidadDialog.OnNacionalidadListener, Personalizado_Dialog.OnDialogoPersoListener {
+    NacionalidadDialog.OnNacionalidadListener, Personalizado_Dialog.OnDialogoPersoListener, UsuariosAdapter.OnUserListener {
 
     private lateinit var listaUsuario: ArrayList<User>;
     private lateinit var adaptadoUsuariosAdapter: UsuariosAdapter
@@ -163,6 +164,10 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener,
                 val dialog = NacionalidadDialog()
                 dialog.show(supportFragmentManager, null)
             }
+            R.id.menu_ayuda -> {
+                val dialog: InfoDialog = InfoDialog.newInstance("comunicacion",12)
+                dialog.show(supportFragmentManager,null)
+            }
         }
         return true
     }
@@ -220,6 +225,10 @@ class MainActivity : AppCompatActivity(), OnItemSelectedListener,
     override fun onPersonalizadoSelected(genero: String, resultados: Int) {
         getURLResponse("https://randomuser.me/api/?results=${resultados}&gender=${genero.toLowerCase()}")
 
+    }
+
+    override fun onUserSelected(user: User) {
+        TODO("Not yet implemented")
     }
 }
 
