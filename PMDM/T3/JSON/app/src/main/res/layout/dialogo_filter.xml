@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textoFiltrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtrar"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoGenero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Genero"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoFiltrar" />
+
+    <Spinner
+        android:entries="@array/genero"
+        android:id="@+id/spinnerGenero"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textoGenero"
+        app:layout_constraintTop_toBottomOf="@+id/textoGenero" />
+
+    <TextView
+        android:id="@+id/textoResultados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="NºResultados"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/spinnerGenero"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGenero" />
+
+    <Spinner
+        android:layout_marginTop="20dp"
+        android:id="@+id/spinnerResultados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/textoResultados"
+        app:layout_constraintStart_toStartOf="@+id/textoResultados"
+        app:layout_constraintTop_toBottomOf="@+id/textoResultados" />
+
+    <Button
+        android:id="@+id/boton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Filtrar"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerResultados"
+        app:layout_constraintStart_toStartOf="@+id/spinnerResultados"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerResultados" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
