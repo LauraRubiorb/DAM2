@@ -4,33 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="20dp">
 
-    <TextView
-        android:layout_marginBottom="20dp"
-        android:id="@+id/textHora"
-        android:layout_width="wrap_content"
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_origen"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hora"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_destino"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/textHora"
-        app:layout_constraintStart_toStartOf="@+id/textHora"
-        app:layout_constraintTop_toBottomOf="@+id/guideline" />
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_origen"
+        app:layout_constraintStart_toStartOf="@+id/spinner_origen"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_origen" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

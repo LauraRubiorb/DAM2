@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_filtrar"
+        android:title="@string/filtrar">
+    </item>
+    <item
+        android:id="@+id/menu_buscar"
+        android:title="@string/buscar">
+    </item>
+    <item
+        android:id="@+id/menu_reset"
+        android:title="@string/resetear">
+    </item>
+</menu>
