@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "880085305287",
+    "project_id": "lrr-ces",
+    "storage_bucket": "lrr-ces.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880085305287:android:c17a29b703831450defbe2",
+        "android_client_info": {
+          "package_name": "com.example.navegacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3BW8X0d0pjvm5NW2z_R4hO_1xiB3jgJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

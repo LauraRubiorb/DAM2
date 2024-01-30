@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.SecondFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_email_fg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="email"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_id_fg2"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="introduce id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_nombre_fg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="introduce nombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_id_fg2" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_precio_fg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="introduce precio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_nombre_fg2" />
+
+        <Spinner
+            android:layout_marginTop="20dp"
+            android:id="@+id/spinner_categorias"
+            android:entries="@array/categorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_precio_fg2" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_stock_fg2"
+            android:layout_width="match_parent"
+            android:hint="Introduce stock"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_categorias" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_descripcion_fg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="introduce descripcion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_stock_fg2" />
+
+        <RadioGroup
+            android:layout_marginTop="20dp"
+            android:id="@+id/radio_grupo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_descripcion_fg2" >
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_marginTop="20dp"
+                android:id="@+id/radio_tarjeta"
+                android:text="Tarjeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_marginTop="20dp"
+                android:id="@+id/radio_paypal"
+                android:text="Paypal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="20dp"
+            android:id="@+id/button_add_fg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_grupo" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

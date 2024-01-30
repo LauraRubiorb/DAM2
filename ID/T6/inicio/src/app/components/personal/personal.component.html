@@ -1,0 +1,15 @@
+<h2>Informacion personal</h2>
+<button (click)="pulsacionBoton()" class="btn btn-primary">
+  {{ textoBoton }}
+</button>
+@if (mostrarContenido) {
+<!--Modificar el artibuto con []-->
+<img
+  style="height: 200px; width: 200px"
+  [src]="imagenPerfil"
+  alt="imagen perfil"
+/>
+
+}
+
+<!--Poner un boton donde al mostrar se muestra la imagen-->

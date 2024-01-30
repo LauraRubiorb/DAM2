@@ -1,0 +1,1 @@
+ir a la carpeta que ha creado : inicio: y escribo sudo npm install -g (ejecutar como administrador)

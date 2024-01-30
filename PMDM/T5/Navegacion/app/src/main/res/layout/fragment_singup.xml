@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.SingUpFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_margin="20dp"
+            android:id="@+id/edit_singup_nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="nombre:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_singup_apellido"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="apellido:"
+            app:layout_constraintEnd_toEndOf="@+id/edit_singup_nombre"
+            app:layout_constraintStart_toStartOf="@+id/edit_singup_nombre"
+            app:layout_constraintTop_toBottomOf="@+id/edit_singup_nombre" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_singup_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="email:"
+            app:layout_constraintEnd_toEndOf="@+id/edit_singup_apellido"
+            app:layout_constraintStart_toStartOf="@+id/edit_singup_apellido"
+            app:layout_constraintTop_toBottomOf="@+id/edit_singup_apellido" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_singup_passw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="password:"
+            app:layout_constraintEnd_toEndOf="@+id/edit_singup_email"
+            app:layout_constraintStart_toStartOf="@+id/edit_singup_email"
+            app:layout_constraintTop_toBottomOf="@+id/edit_singup_email" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_singup_direccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="direccion:"
+            app:layout_constraintEnd_toEndOf="@+id/edit_singup_passw2"
+            app:layout_constraintStart_toStartOf="@+id/edit_singup_passw2"
+            app:layout_constraintTop_toBottomOf="@+id/edit_singup_passw2" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/edit_singup_passw2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="password:"
+            app:layout_constraintEnd_toEndOf="@+id/edit_singup_passw"
+            app:layout_constraintStart_toStartOf="@+id/edit_singup_passw"
+            app:layout_constraintTop_toBottomOf="@+id/edit_singup_passw" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="20dp"
+
+            android:id="@+id/button_crear"
+            android:text="crear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_singup_direccion" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/iniciar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="crear e iniciar"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_crear" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

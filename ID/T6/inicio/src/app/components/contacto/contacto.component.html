@@ -1,0 +1,22 @@
+<h2>Informacion de contacto</h2>
+<select class="form-select" #select (change)="modificarSeleccion(select.value)">
+  <option value="1">Opcion 1</option>
+  <option value="2">Opcion 2</option>
+  <option value="3">Opcion 3</option>
+  <option value="4">Opcion 4</option>
+  <option value="5">Opcion 5</option>
+  <option value="6">Opcion 6</option>
+</select>
+
+<!--Directivas switch-->
+@switch (opcion) { @case ("1") {
+<div class="alert alert-primary mt-5" role="alert">Valor 1</div>
+} @case ("2") {
+<div class="alert alert-secondary mt-5" role="alert">Valor 2</div>
+} @case ("3") {
+<div class="alert alert-success mt-5" role="alert">Valor 3</div>
+} @case ("4") {
+<div class="alert alert-danger mt-5" role="alert">Valor 4</div>
+} @default {
+<p>No opcion contemplada</p>
+} }
