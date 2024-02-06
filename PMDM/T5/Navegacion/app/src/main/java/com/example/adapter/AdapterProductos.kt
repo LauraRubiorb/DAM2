@@ -18,7 +18,7 @@ import org.json.JSONObject
 
 class AdapterProductos(var context: Context) : RecyclerView.Adapter<AdapterProductos.MyHolder>() {
 
-    private var lista: ArrayList<Producto>
+    private var lista: ArrayList<Producto?>
     private lateinit var auth: FirebaseAuth;
 
 
@@ -49,9 +49,9 @@ class AdapterProductos(var context: Context) : RecyclerView.Adapter<AdapterProdu
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val item: Producto = lista[position]
+        val item: Producto = lista[position]!!
 
-        holder.toolbar.title = item.nombre
+        holder.toolbar.title = item.title
 
         //poner un menu en el toolbar
         //holder.toolbar.inflateMenu(R.menu.item_menu)
@@ -66,10 +66,10 @@ class AdapterProductos(var context: Context) : RecyclerView.Adapter<AdapterProdu
             }
             return@setOnMenuItemClickListener true
         }
-        Glide.with(context).load(item.imagen).into(holder.imagen)
+        Glide.with(context).load(item.thumbnail).into(holder.imagen)
     }
 
-        fun addProducto(item:Producto){
+        fun addProducto(item:Producto?){
             lista.add(item)
             notifyItemInserted(lista.size-1)
         }

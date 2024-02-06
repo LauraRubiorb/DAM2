@@ -1,0 +1,21 @@
+<div class="row">
+  @for (item of lista_asignatura; track $index) {
+  <div class="col">
+    <div class="card mt-3" style="width: 18rem">
+      <img [src]="item.imagen | imagenes" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}-{{ item.siglas }}</h5>
+        <h5 class="card-text">Horas: {{ item.horas }}</h5>
+        <h5>Curso: {{ item.curso }}</h5>
+        <h5>Nivel: {{ item.nivel }}</h5>
+        <h5>Profesor:{{ item.profesor }}</h5>
+        <ul class="list-group m-3">
+          @for (item1 of item.conocimientos; track $index) {
+          <li class="list-group-item">{{ item1 }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+  }
+</div>

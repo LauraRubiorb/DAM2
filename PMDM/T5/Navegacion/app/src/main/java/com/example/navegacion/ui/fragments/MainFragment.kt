@@ -2,6 +2,7 @@ package com.example.navegacion.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,11 +57,24 @@ class MainFragment : Fragment() {
         //database.getReference("nombre").setValue("Prueba")
         //database.getReference("apellido").setValue("Prueba")
 
-        binding!!.buttonEscuchar.setOnClickListener {
-            val referece =
-                database.getReference("usuarios").child(auth.currentUser!!.uid).child("favoritos")
+        getProductsFirebase()
 
-            referece.addListenerForSingleValueEvent(object :
+        /*
+        binding!!.buttonEscuchar.setOnClickListener {
+            val referece = database.getReference("datos").child("products")
+
+            // escucha siempre que cambie, tantas veces como cambios existan
+            referece.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.v("datos",snapshot.toString())
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+            //al pulsar se hace una consulta
+            /*referece.addListenerForSingleValueEvent(object :
                 ValueEventListener { //le ponemos un objeto anonimo y creamos la interfaz
                 override fun onDataChange(snapshot: DataSnapshot) {
                     //el datasanpshot es cada uno de los hijos
@@ -68,7 +82,16 @@ class MainFragment : Fragment() {
                     hijos.forEach {
                         //Log.v("datos",it.value.toString())
                         val producto = it.getValue(Producto::class.java)
-                        val itemProducto = Producto(producto?.title,producto?.price,producto?.description,producto?.category,producto?.thumbnail,producto?.id,producto?.images)
+                        val itemProducto = Producto(
+                            producto?.title,
+                            producto?.price,
+                            producto?.description,
+                            producto?.category,
+                            producto?.thumbnail,
+                            producto?.id,
+                            producto?.images,
+                            //lista_images
+                        )
                         adatador.addProducto(itemProducto)
 
                     }
@@ -78,15 +101,34 @@ class MainFragment : Fragment() {
 
                 }
 
-            })
+            })*/
 
-        }
+        }*/
 
 
     }
 
+    private fun getProductsFirebase() {
+        val referece = database.getReference("datos").child("products")
+        //database.getReference("datos").child("productos").child("0").child("precio")
+        referece.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.v("datos",snapshot.toString())
+                val hijos = snapshot.children
+                hijos.forEach {
+                    val producto = it.getValue(Producto::class.java)
+                    adatador.addProducto(producto)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     //"https://dummyjson.com/products"
-    /*
+
     private fun getAllProducts() {
         val peticion: JsonObjectRequest = JsonObjectRequest("https://dummyjson.com/products", {
             val productos = it.getJSONArray("products")
@@ -105,7 +147,7 @@ class MainFragment : Fragment() {
                     item.getString("category"),
                     item.getString("thumbnail"),
                     item.getInt("id"),
-                    imagenes = lista_images
+                    lista_images
                 )
                 adatador.addProducto(itemProducto)
             }
@@ -113,5 +155,5 @@ class MainFragment : Fragment() {
         Volley.newRequestQueue(context).add(peticion)
 
 
-    }*/
+    }
 }

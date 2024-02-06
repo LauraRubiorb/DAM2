@@ -1,7 +1,5 @@
 package com.example.model
 
-import java.io.Serializable
-
 class Producto(
     var title: String? = null,
     var price: Double? = null,
@@ -9,7 +7,8 @@ class Producto(
     var category: String? = null,
     var thumbnail: String? = null,
     var id: Int? = null,
-    var images: ArrayList<String>? = null
+    var images: ArrayList<String>? = null,
+
 ) {
 
 
