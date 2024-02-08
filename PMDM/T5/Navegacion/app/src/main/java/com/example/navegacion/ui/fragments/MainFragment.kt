@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley
 import com.example.adapter.AdapterProductos
 import com.example.model.Producto
 import com.example.navegacion.databinding.FragmentMainBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -59,6 +60,37 @@ class MainFragment : Fragment() {
 
         getProductsFirebase()
 
+        binding!!.buttonEscuchar.setOnClickListener {
+            if (binding!!.editTextTitleProduct.text!!.isEmpty()|| binding!!.editTextPriceProduct.text!!.isEmpty()){
+                Snackbar.make(binding!!.root,"Faltan datos",Snackbar.LENGTH_SHORT).show()
+            }else{
+                val precio = binding!!.editTextPriceProduct.text.toString()
+                val referecia = database.getReference("datos").child("products").orderByChild("title").equalTo(
+                    binding!!.editTextTitleProduct.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        //el objeto completo .value ->
+                        for (i in snapshot.children) {
+                            for (j in i.children){
+                                if (j.key.toString() == "price"){
+
+                                    j.ref.setValue(precio.toInt())
+                                }
+                            }
+                        }
+
+
+                            //CAMBIAR DATO
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Snackbar.make(binding!!.root,"Producto no encontrado",Snackbar.LENGTH_SHORT).show()
+                    }
+
+                })
+
+            }
+        }
         /*
         binding!!.buttonEscuchar.setOnClickListener {
             val referece = database.getReference("datos").child("products")
@@ -109,10 +141,13 @@ class MainFragment : Fragment() {
     }
 
     private fun getProductsFirebase() {
-        val referece = database.getReference("datos").child("products")
+        val referece = database.getReference("datos").child("products").orderByChild("discountPercentage")
         //database.getReference("datos").child("productos").child("0").child("precio")
         referece.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                adatador.borrarLista()//borrar lista y luego repintar para que no se repitaX
+
+                //ORDENAR PRODUCTOS
                 Log.v("datos",snapshot.toString())
                 val hijos = snapshot.children
                 hijos.forEach {
@@ -125,6 +160,7 @@ class MainFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
+
     }
 
     //"https://dummyjson.com/products"

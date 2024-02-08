@@ -6,12 +6,31 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_titleProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Introduce el nombre del producto"
+        app:layout_constraintEnd_toStartOf="@+id/edit_fragment_main_nombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_fragment_main_nombre" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_priceProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Introduce el nuevo precio del producto"
+        app:layout_constraintEnd_toEndOf="@+id/editText_titleProduct"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_titleProduct" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/edit_fragment_main_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="nombre" />
 
@@ -24,14 +43,15 @@
         android:text="Buscar"
         app:layout_constraintBottom_toTopOf="@+id/recycler_main_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/editText_priceProduct"
+        app:layout_constraintTop_toBottomOf="@+id/editText_priceProduct" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_main_fragment"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_fragment_main_nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_priceProduct" />
 </androidx.constraintlayout.widget.ConstraintLayout>

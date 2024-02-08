@@ -57,10 +57,13 @@ class AdapterProductos(var context: Context) : RecyclerView.Adapter<AdapterProdu
         //holder.toolbar.inflateMenu(R.menu.item_menu)
         //escuchamos al menu
         holder.toolbar.setOnMenuItemClickListener {
-            when(it.itemId){
-                R.id.menu_fav_item->{
-                    val database = FirebaseDatabase.getInstance("https://lrr-ces-default-rtdb.europe-west1.firebasedatabase.app/")
-                    var  user_producto = database.getReference("usuarios").child(auth.currentUser!!.uid).child("favoritos")
+            when (it.itemId) {
+                R.id.menu_fav_item -> {
+                    val database =
+                        FirebaseDatabase.getInstance("https://lrr-ces-default-rtdb.europe-west1.firebasedatabase.app/")
+                    var user_producto =
+                        database.getReference("usuarios").child(auth.currentUser!!.uid)
+                            .child("favoritos")
                     user_producto.child(item.id.toString()).setValue(item)
                 }
             }
@@ -69,9 +72,14 @@ class AdapterProductos(var context: Context) : RecyclerView.Adapter<AdapterProdu
         Glide.with(context).load(item.thumbnail).into(holder.imagen)
     }
 
-        fun addProducto(item:Producto?){
-            lista.add(item)
-            notifyItemInserted(lista.size-1)
-        }
+    fun addProducto(item: Producto?) {
+        lista.add(item)
+        notifyItemInserted(lista.size - 1)
+    }
+
+    fun borrarLista(): Unit {
+        lista.clear()
+        notifyDataSetChanged()
+    }
 
 }

@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="Introduce email"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagen_user" />
@@ -31,6 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:inputType="textPassword"
         android:hint="Introduce password"
         app:layout_constraintEnd_toEndOf="@+id/edit_login_user"
         app:layout_constraintStart_toStartOf="@+id/edit_login_user"

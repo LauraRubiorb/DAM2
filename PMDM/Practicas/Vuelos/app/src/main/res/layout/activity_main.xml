@@ -4,26 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".MainActivity">
 
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner_origen"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinner_destino"
-        android:layout_marginTop="20dp"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/salida"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/spinner_origen"
-        app:layout_constraintStart_toStartOf="@+id/spinner_origen"
+        android:hint="salida"
+        app:layout_constraintStart_toEndOf="@+id/spinner_origen"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/hora_salida"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="hora salida"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/salida"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_llegada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_origen" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/regreso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="regreso"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/spinner_llegada"
+        app:layout_constraintTop_toBottomOf="@+id/salida" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/hora_llegada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="hora regreso"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/regreso"
+        app:layout_constraintTop_toBottomOf="@+id/hora_salida" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

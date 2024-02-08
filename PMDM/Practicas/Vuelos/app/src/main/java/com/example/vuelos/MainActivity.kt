@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity(), OnTimeSetListener, OnDateSetListener {
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        binding.textHora.text = ("$hourOfDay : $minute")
+      //  binding.textHora.text = ("$hourOfDay : $minute")
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        binding.textFecha.text = "$dayOfMonth/${month + 1}/$year"
+        //binding.textFecha.text = "$dayOfMonth/${month + 1}/$year"
     }
 }
