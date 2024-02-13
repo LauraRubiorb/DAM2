@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "770937398604",
+    "firebase_url": "https://jpd-ces-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "jpd-ces",
+    "storage_bucket": "jpd-ces.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770937398604:android:2bb795459a0e25d06cdbe9",
+        "android_client_info": {
+          "package_name": "com.example.entregafinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDloDje8f5BSvER7mpxC3SnblcJglg355g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770937398604:android:bcc466ddece9c1316cdbe9",
+        "android_client_info": {
+          "package_name": "com.example.javier_piudo_dam2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDloDje8f5BSvER7mpxC3SnblcJglg355g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770937398604:android:f861510254b0f5e36cdbe9",
+        "android_client_info": {
+          "package_name": "com.example.t5_navegacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDloDje8f5BSvER7mpxC3SnblcJglg355g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

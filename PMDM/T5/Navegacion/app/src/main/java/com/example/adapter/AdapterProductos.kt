@@ -61,7 +61,7 @@ class AdapterProductos(var context: Context) : RecyclerView.Adapter<AdapterProdu
                 R.id.menu_fav_item -> {
                     val database =
                         FirebaseDatabase.getInstance("https://lrr-ces-default-rtdb.europe-west1.firebasedatabase.app/")
-                    var user_producto =
+                    val user_producto =
                         database.getReference("usuarios").child(auth.currentUser!!.uid)
                             .child("favoritos")
                     user_producto.child(item.id.toString()).setValue(item)

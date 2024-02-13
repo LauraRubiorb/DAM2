@@ -7,22 +7,36 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.laura_rubio_damii.ui.fragments.FirstFragment"
+        android:name="com.example.laura_rubio_damii.ui.fragments.LoginFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_login">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.laura_rubio_damii.ui.fragments.SecondFragment"
+        android:name="com.example.laura_rubio_damii.ui.fragments.RegistrarFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_registrar">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.laura_rubio_damii.ui.fragments.UserFragment"
+        android:label="UserFragment" />
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.laura_rubio_damii.ui.fragments.AdminFragment"
+        android:label="AdminFragment" />
 </navigation>

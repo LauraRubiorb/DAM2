@@ -61,34 +61,33 @@ class MainFragment : Fragment() {
         getProductsFirebase()
 
         binding!!.buttonEscuchar.setOnClickListener {
-            if (binding!!.editTextTitleProduct.text!!.isEmpty()|| binding!!.editTextPriceProduct.text!!.isEmpty()){
-                Snackbar.make(binding!!.root,"Faltan datos",Snackbar.LENGTH_SHORT).show()
-            }else{
+            if (binding!!.editTextTitleProduct.text!!.isEmpty() || binding!!.editTextPriceProduct.text!!.isEmpty()) {
+                Snackbar.make(binding!!.root, "Faltan datos", Snackbar.LENGTH_SHORT).show()
+            } else {
                 val precio = binding!!.editTextPriceProduct.text.toString()
-                val referecia = database.getReference("datos").child("products").orderByChild("title").equalTo(
-                    binding!!.editTextTitleProduct.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
+                database.getReference("datos").child("products").orderByChild("title").equalTo(
+                    binding!!.editTextTitleProduct.text.toString()
+                ).addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         //el objeto completo .value ->
                         for (i in snapshot.children) {
-                            for (j in i.children){
-                                if (j.key.toString() == "price"){
-
+                            for (j in i.children) {
+                                if (j.key.toString() == "price") {
                                     j.ref.setValue(precio.toInt())
                                 }
                             }
                         }
-
-
-                            //CAMBIAR DATO
-
+                        //CAMBIAR DATO
                     }
 
                     override fun onCancelled(error: DatabaseError) {
-                        Snackbar.make(binding!!.root,"Producto no encontrado",Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(
+                            binding!!.root,
+                            "Producto no encontrado",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
                     }
-
                 })
-
             }
         }
         /*
@@ -106,7 +105,7 @@ class MainFragment : Fragment() {
                 }
             })
             //al pulsar se hace una consulta
-            /*referece.addListenerForSingleValueEvent(object :
+            referece.addListenerForSingleValueEvent(object :
                 ValueEventListener { //le ponemos un objeto anonimo y creamos la interfaz
                 override fun onDataChange(snapshot: DataSnapshot) {
                     //el datasanpshot es cada uno de los hijos
@@ -133,7 +132,7 @@ class MainFragment : Fragment() {
 
                 }
 
-            })*/
+            })
 
         }*/
 
@@ -141,14 +140,15 @@ class MainFragment : Fragment() {
     }
 
     private fun getProductsFirebase() {
-        val referece = database.getReference("datos").child("products").orderByChild("discountPercentage")
+        val referece =
+            database.getReference("datos").child("products").orderByChild("discountPercentage")
         //database.getReference("datos").child("productos").child("0").child("precio")
-        referece.addValueEventListener(object : ValueEventListener{
+        referece.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 adatador.borrarLista()//borrar lista y luego repintar para que no se repitaX
 
                 //ORDENAR PRODUCTOS
-                Log.v("datos",snapshot.toString())
+                Log.v("datos", snapshot.toString())
                 val hijos = snapshot.children
                 hijos.forEach {
                     val producto = it.getValue(Producto::class.java)
