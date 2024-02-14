@@ -1,0 +1,38 @@
+<form>
+  <div class="row">
+    <select #selectConocimientos class="form-select">
+      <option>DAM</option>
+      <option>DAW</option>
+      <option>AMBOS</option>
+    </select>
+    <input
+      #inputAsignatura
+      class="form-control mt-5"
+      placeholder="Escribe una asignatura"
+    />
+    <input
+      #inputProfesor
+      class="form-control mt-3"
+      placeholder="Escribe un profesor"
+    />
+    <button
+      (click)="
+        realizarBusqueda(
+          inputProfesor.value,
+          inputAsignatura.value,
+          selectConocimientos.value
+        )
+      "
+      class="btn btn-primary mt-3"
+    >
+      Buscar
+    </button>
+  </div>
+  <div class="row">
+    @for (item of asignatuasFiltrar; track $index) {
+    <app-carta-asignatura class="col" [asignatura]="item">
+    </app-carta-asignatura>
+
+    }
+  </div>
+</form>

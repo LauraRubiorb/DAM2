@@ -7,23 +7,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import kotlinx.coroutines.CoroutineStart
 import java.net.DatagramPacket
 import java.net.InetAddress
 import java.net.MulticastSocket
-import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import android.util.Base64
 import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
-import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
 
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var multicastSocket: MulticastSocket
     private lateinit var receiveThread: Thread
-    private var palabra = "hola"
+    private var palabra = "1234567891234567"
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -11,7 +11,6 @@ export class PersonalComponent {
   textoBoton: String = 'Mostrar';
   mostrarContenido = false;
   pulsacionBoton() {
-    //if ternario-> ? si se cumple tal ---- : si no se cumple tal
 
     if (this.mostrarContenido) {
       this.textoBoton = 'Ocultar';
@@ -20,6 +19,7 @@ export class PersonalComponent {
       this.textoBoton = 'Mostrar';
       this.mostrarContenido = true;
     }
+    //if ternario-> ? si se cumple tal ---- : si no se cumple tal
 
     /*this.mostrarContenido
       ? (this.textoBoton = 'Ocultar')

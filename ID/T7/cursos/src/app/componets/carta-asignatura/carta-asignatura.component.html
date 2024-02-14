@@ -1,0 +1,14 @@
+<div class="card m-3" style="width: 18rem">
+  <img [src]="asignatura.imagen | imagenes" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ asignatura.nombre | uppercase }}</h5>
+    <!--tranformacion -->
+    <h5 class="card-title">{{ asignatura.curso }}</h5>
+    <h6 class="card-title">
+      {{ asignatura.profesor | slice : 0 : 2 | lowercase }}
+    </h6>
+    <!--el eslice neccesita argumentos, puedo poner tantos pipes como quiera-->
+  </div>
+</div>
+
+<!--PI TRANSFORMAR HTMOL-->
