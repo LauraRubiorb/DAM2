@@ -1,0 +1,11 @@
+@for (item of lista_ropas; track $index) {
+<div id="carouselExampleFade" class="carousel slide carousel-fade m-5">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <h3 style="text-align: center">{{ item.nombre }}</h3>
+      <img [src]="[item.imagen]" class="d-block w-100" alt="..." />
+    </div>
+  </div>
+</div>
+
+}

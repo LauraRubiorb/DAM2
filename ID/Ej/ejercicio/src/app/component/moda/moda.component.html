@@ -1,0 +1,19 @@
+<!--CARTAS DE TODA LA ROPA-->
+<!--deberá ser dinámico: si se añade una prenda aparecerán mas, etc-->
+<div class="row">
+  @for (item of lista_ropas; track $index) {
+  <div class="card m-5" style="width: 20rem">
+    <img [src]="[item.imagen | imagenes]" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h3 class="card-title">{{ item.nombre }}</h3>
+      <h5>{{ item.tipo }}</h5>
+      <ul class="list-group">
+        <li class="list-group-item">{{ item.tallas[0] }}</li>
+        <li class="list-group-item">{{ item.tallas[1] }}</li>
+        <li class="list-group-item">{{ item.tallas[2] }}</li>
+        <li class="list-group-item">{{ item.tallas[3] }}</li>
+      </ul>
+    </div>
+  </div>
+  }
+</div>
